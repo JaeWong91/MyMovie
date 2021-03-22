@@ -12,7 +12,9 @@ body {
 }
 */
 
-nav {
+
+/* form icons will all be orange colour */
+nav, .form-icon {
     color: #e64a19;
 }
 
@@ -29,4 +31,14 @@ nav ul a {
 
 .sidenav-trigger {
     color: #e64a19;
+}
+
+.registration-form {
+    color: black;
+}
+
+.register-button {
+    background-color: #e64a19;
+    color: white;
+
 }
