@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h2>I'm extending the base template!</h2>
-
     {% for movie in movies %}
         {{ movie.movie_name }}<br>
         {{ movie.genre }}<br>
