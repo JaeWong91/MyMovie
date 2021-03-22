@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyMovie</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>I'm extending the base template!</h2>
+
     {% for movie in movies %}
         {{ movie.movie_name }}<br>
         {{ movie.genre }}<br>
@@ -13,5 +10,5 @@
         {{ movie.director }}<br>
         {{ movie.cast }}<br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
