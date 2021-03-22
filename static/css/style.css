@@ -1,5 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
 body {
     background-color: #263238;
     color: white;
 }
 
+
+
+/*.text-shadow {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+*/
+
+nav {
+    color: #e64a19;
+}
+
+nav .brand-logo {
+    color: #e64a19;
+    font-family: "Chango", sans-serif;
+    padding-left: 20px;
+}
+
+nav ul a {
+    color: #e64a19;
+    font-weight: 700;
+}
+
+.sidenav-trigger {
+    color: #e64a19;
+}

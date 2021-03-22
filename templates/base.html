@@ -13,6 +13,36 @@
 </head>
 <body>
 
+    <header>
+        <!-- top navbar -->
+        <nav class="nav-extended blue-grey darken-4"> 
+            <div class="nav-wrapper">
+                <a href="{{ url_for('get_movies') }}" class="brand-logo">MyMovie</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('get_movies') }}">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Manage Movies</a></li>
+                    <li><a href="#">Log Out</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- mobile sidenav -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('get_movies') }}">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Manage Movies</a></li>
+            <li><a href="#">Log Out</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Register</a></li>
+        </ul>
+    </header>
+
     {% block content %}
     {% endblock %}
 
