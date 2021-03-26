@@ -21,7 +21,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
                     <li><a href="#">Manage Movies</a></li>
                     <li><a href="#">Log Out</a></li>
@@ -34,7 +34,7 @@
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
             <li><a href="#">Manage Movies</a></li>
             <li><a href="#">Log Out</a></li>
@@ -48,7 +48,7 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div class="row flashes">
+                    <div class="container row flashes">
                         <h4 class="center-align">{{ message }}</h4>
                     </div>
                 {% endfor %}
