@@ -48,3 +48,13 @@ nav ul a {
     line-height: 2;
     background-color: #ffca28;
 }
+
+
+/* collapsable/accordian colour scheme */
+.collapsible, 
+.collapsible-body, 
+.collapsible-header {
+    border-color: #e64a19;
+    background-color: transparent;
+}
+
