@@ -42,3 +42,9 @@ nav ul a {
     color: white;
 
 }
+
+.flashes h4 {
+    color: black;
+    line-height: 2;
+    background-color: #ffca28;
+}

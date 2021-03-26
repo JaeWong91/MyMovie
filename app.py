@@ -20,6 +20,12 @@ mongo = PyMongo(app)
 
 
 @app.route("/") # the forward slash "/" refers to the default route
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
+@app.route("/") # 
 @app.route("/get_movies")
 def get_movies():
     movies = mongo.db.movies.find()
@@ -28,6 +34,25 @@ def get_movies():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        # check if username already exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user: # this is "truly", ie if "existing_user == true"
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+            # if you want the user to re-confirm password, add a line here 
+        }
+        mongo.db.users.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful")
     return render_template("register.html")
 
 

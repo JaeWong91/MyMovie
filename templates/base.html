@@ -17,12 +17,12 @@
         <!-- top navbar -->
         <nav class="nav-extended blue-grey darken-4"> 
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_movies') }}" class="brand-logo">MyMovie</a>
+                <a href="{{ url_for('home') }}" class="brand-logo">MyMovie</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_movies') }}">Home</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="#">Profile</a></li>
-                    <li><a href="#">Movies</a></li>
+                    <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
                     <li><a href="#">Manage Movies</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Log In</a></li>
@@ -33,9 +33,9 @@
         
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ url_for('get_movies') }}">Home</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Movies</a></li>
+            <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
             <li><a href="#">Manage Movies</a></li>
             <li><a href="#">Log Out</a></li>
             <li><a href="#">Log In</a></li>
@@ -43,8 +43,24 @@
         </ul>
     </header>
 
-    {% block content %}
-    {% endblock %}
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+
+
+    <main class="container"> 
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
