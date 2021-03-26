@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for movie in movies %}
-        {{ movie.movie_name }}<br>
-        {{ movie.year }}<br>
-        {{ movie.genre }}<br>
-        {{ movie.director }}<br>
-        {{ movie.cast }}<br>
-    {% endfor %}
+    <h3 class="center-align">Movies</h3>
 
 <ul class="collapsible">
+    {% for movie in movies %}
     <li>
-        <div class="collapsible-header"><i class="fas fa-caret-down"></i>First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class="collapsible-header">
+            <i class="fas fa-caret-down"></i>
+            <strong>{{ movie.movie_name }}</strong> <span>&nbsp({{ movie.year }})</span> <!--"&nbsp" forces a space-->
+        </div>
+        <div class="collapsible-body row">
+            <div class="col s12 m4 center-align">
+                <img src="{{ movie.image }}" alt="">
+            </div>
+            <div class="col s12 m8">
+                <p><b>Genre</b>: {{ movie.genre }}</p>
+                <p><b>Director(s)</b>: {{ movie.director }}</p>
+                <p><b>Cast</b>: {{ movie.cast }}</p>
+            </div>
+        </div>
     </li>
-    <li>
-        <div class="collapsible-header"><i class="fas fa-caret-down"></i>Second</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header"><i class="fas fa-caret-down"></i>Third</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
+    {% endfor %}
 </ul>
 
 {% endblock %}
