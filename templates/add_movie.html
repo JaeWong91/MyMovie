@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Add Movie</h3>
+
+    <div class="container">
+        <div class="row">
+            <form class="col s12" method="POST" action="">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="movie_name" type="text" class="validate white-text">
+                        <label for="movie_name">Movie Title</label>
+                        <span class="helper-text blue-text text-lighten-2">Enter the title of the Movie</span>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="year" type="text" class="validate white-text">
+                        <label for="year">Year of Release</label>
+                        <span class="helper-text blue-text text-lighten-2">Enter the year the movie had released</span>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="genre" type="text" class="validate white-text">
+                        <label for="genre">Genre</label>
+                        <span class="helper-text blue-text text-lighten-2">Enter genre of the movie. More than one genre is allowed.</span>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="director" type="text" class="validate white-text">
+                        <label for="director">Director(s)</label>
+                        <span class="helper-text blue-text text-lighten-2">Enter the name of the director of the movie. Multiple directors are allowed.</span>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="cast" type="text" class="validate white-text">
+                        <label for="cast">Cast</label>
+                        <span class="helper-text blue-text text-lighten-2">Enter the main cast of the movie. Multiple actors/actresses are allowed.</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
