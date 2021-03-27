@@ -17,7 +17,9 @@ h3 {
 
 
 /* form icons will all be orange colour */
-nav, .form-icon {
+nav, 
+.form-icon,
+i {
     color: #e64a19;
 }
 
@@ -27,7 +29,8 @@ nav .brand-logo {
     padding-left: 20px;
 }
 
-nav ul a {
+nav ul a,
+.btn-large {
     color: #e64a19;
     font-weight: 700;
 }
@@ -62,8 +65,4 @@ nav ul a {
 .collapsible-body {
     border-color: #e64a19;
     background-color: #3b4d57;
-}
-
-i {
-    color: #e64a19;
 }

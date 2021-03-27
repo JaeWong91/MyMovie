@@ -93,7 +93,8 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username) # we need to pass the "username" variable here
+        return render_template("profile.html", username=username)
+        # we need to pass the "username" variable here
 
     return redirect(url_for("login"))
 
@@ -106,8 +107,23 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_movie")
+@app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
+    if request.method == "POST":
+        movie = {
+            "movie_name": request.form.get("movie_name"),
+            "year": request.form.get("year"),
+            "genre": request.form.get("genre"),
+            #if this was a checkbox selection, 
+            #will need to use "request.form.getlist('genre')"
+            "director": request.form.get("director"),
+            "cast": request.form.get("cast"),
+            "image": request.form.get("image")
+        }
+        mongo.db.movies.insert_one(movie) #here we insert the variable "movie" into insert_one()
+        flash("Movie Successfully Added")
+        return redirect(url_for("get_movies"))
+        # IMPORTANT WORK IN PROGRESS - Here will need to add the REVIEWS database and link it with the MOVIES database
     return render_template("add_movie.html")
 
 
