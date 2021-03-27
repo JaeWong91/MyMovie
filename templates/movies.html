@@ -3,25 +3,21 @@
 
     <h3 class="center-align">Movies</h3>
 
-<ul class="collapsible">
+
     {% for movie in movies %}
-    <li>
-        <div class="collapsible-header">
-            <i class="fas fa-caret-down"></i>
-            <strong>{{ movie.movie_name }}</strong> <span>&nbsp({{ movie.year }})</span> <!--"&nbsp" forces a space-->
+    <div class="row movie-item">
+        <div class="col s12 m4 center-align">
+            <img src="{{ movie.image }}" alt="">
         </div>
-        <div class="collapsible-body row">
-            <div class="col s12 m4 center-align">
-                <img src="{{ movie.image }}" alt="">
-            </div>
-            <div class="col s12 m8">
-                <p><b>Genre</b>: {{ movie.genre }}</p>
-                <p><b>Director(s)</b>: {{ movie.director }}</p>
-                <p><b>Cast</b>: {{ movie.cast }}</p>
-            </div>
+        <div class="col s12 m8">
+            <strong>{{ movie.movie_name }}</strong> <span>&nbsp({{ movie.year }})</span>
+            <!--"&nbsp" forces a space-->
+            <p><b>Genre</b>: {{ movie.genre }}</p>
+            <p><b>Director(s)</b>: {{ movie.director }}</p>
+            <p><b>Cast</b>: {{ movie.cast }}</p>
         </div>
-    </li>
+    </div>
     {% endfor %}
-</ul>
+
 
 {% endblock %}

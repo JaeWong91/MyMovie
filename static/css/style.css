@@ -66,3 +66,12 @@ nav ul a,
     border-color: #e64a19;
     background-color: #3b4d57;
 }
+
+
+.movie-item {
+    display: block;
+    border-color: white ;
+    border-width: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
