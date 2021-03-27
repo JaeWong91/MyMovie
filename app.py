@@ -127,6 +127,14 @@ def add_movie():
     return render_template("add_movie.html")
 
 
+# adding this myself
+@app.route("/movie_page/<movie_name>")
+def movie_page(movie_name):
+    # page redirect to the particular movie
+    get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
+    return render_template("movie_page.html", get_movie=get_movie)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

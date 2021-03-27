@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="">
+                <h4 class="center-align">
+                    {{ get_movie.movie_name }} 
+                </h4>
+            </div>
+            <div class="row">
+                <div class="col s12 m4 center-align">
+                    <img src="{{ get_movie.image }}" alt="Movie Image">
+                </div>
+                <div class="col s12 m8 left-align">
+                    <p><b>Year</b>: {{ get_movie.year }}</p>
+                    <p><b>Genre</b>: {{ get_movie.genre }}</p>
+                    <p><b>Director(s)</b>: {{ get_movie.director }}</p>
+                    <p><b>Cast</b>: {{ get_movie.cast }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
