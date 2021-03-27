@@ -4,33 +4,54 @@
     <h3 class="center-align">Add Movie</h3>
 
     <div class="container">
-        <div class="row">
+        <div class="row card-panel blue-grey darken-3">
             <form class="col s12" method="POST" action="">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="movie_name" type="text" class="validate white-text">
+                        <input id="movie_name" name="movie_name" type="text" minlength="4" 
+                            maxlength="50" class="validate white-text" required>
                         <label for="movie_name">Movie Title</label>
-                        <span class="helper-text blue-text text-lighten-2">Enter the title of the Movie</span>
+                        <span class="helper-text blue-text text-lighten-2">
+                            Enter the title of the Movie
+                        </span>
                     </div>
-                    <div class="input-field col s12">
-                        <input id="year" type="text" class="validate white-text">
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">   <!-- try to find a way to set max to "this year" -->
+                        <input id="year" name="year" type="number" min="1850" 
+                            max="2021" class="validate white-text" required>
                         <label for="year">Year of Release</label>
-                        <span class="helper-text blue-text text-lighten-2">Enter the year the movie had released</span>
+                        <!-- <span class="helper-text blue-text text-lighten-2">Enter the year the movie had released</span> -->
                     </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="genre" type="text" class="validate white-text">
+                        <input id="genre" name="genre" type="text" minlength="4" 
+                            maxlength="30" class="validate white-text" required>
                         <label for="genre">Genre</label>
-                        <span class="helper-text blue-text text-lighten-2">Enter genre of the movie. More than one genre is allowed.</span>
+                        <span class="helper-text blue-text text-lighten-2">
+                            More than one genre is allowed.
+                        </span>
                     </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="director" type="text" class="validate white-text">
+                        <input id="director" name="director" type="text" minlength="3" 
+                            maxlength="30" class="validate white-text" required>
                         <label for="director">Director(s)</label>
-                        <span class="helper-text blue-text text-lighten-2">Enter the name of the director of the movie. Multiple directors are allowed.</span>
+                        <span class="helper-text blue-text text-lighten-2">
+                            Multiple directors are allowed.
+                        </span>
                     </div>
+                </div>
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="cast" type="text" class="validate white-text">
+                        <input id="cast" name="cast" type="text" minlength="5" 
+                            maxlength="50" class="validate white-text" required>
                         <label for="cast">Cast</label>
-                        <span class="helper-text blue-text text-lighten-2">Enter the main cast of the movie. Multiple actors/actresses are allowed.</span>
+                        <span class="helper-text blue-text text-lighten-2">
+                            Enter the main cast of the movie. Multiple actors/actresses are allowed.
+                        </span>
                     </div>
                 </div>
             </form>
