@@ -16,7 +16,7 @@ h3 {
 */
 
 
-/* form icons will all be orange colour */
+/* navbar, form icons will all be orange colour */
 nav, 
 .form-icon,
 i {
@@ -39,6 +39,7 @@ nav ul a,
     color: #e64a19;
 }
 
+/* registration form */
 .registration-form {
     color: black;
 }
@@ -49,10 +50,10 @@ nav ul a,
 
 }
 
+/* flash messages */
 .flashes h4 {
-    color: black;
+    color: #b2dfdb;
     line-height: 2;
-    background-color: #ffca28;
 }
 
 /* collapsable/accordian colour scheme */
