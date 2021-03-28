@@ -107,6 +107,14 @@ def logout():
     return redirect(url_for("login"))
 
 
+# adding this myself
+@app.route("/movie_page/<movie_name>")
+def movie_page(movie_name):
+    # page redirect to the particular movie on click from movie list page
+    get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
+    return render_template("movie_page.html", get_movie=get_movie)
+
+
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     if request.method == "POST":
@@ -151,12 +159,11 @@ def edit_movie(movie_id):
     return render_template("edit_movie.html", movie=movie) #Not sure how to redirect back to "movie_page.html" for specific movie
 
 
-# adding this myself
-@app.route("/movie_page/<movie_name>")
-def movie_page(movie_name):
-    # page redirect to the particular movie on click from movie list page
-    get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
-    return render_template("movie_page.html", get_movie=get_movie)
+@app.route("/movie_page/delete_movie/<movie_id>")
+def delete_movie(movie_id):
+    mongo.db.movies.remove({"_id": ObjectId(movie_id)})
+    flash("Movie Successfully Removed")
+    return redirect(url_for("get_movies"))
 
 
 if __name__ == "__main__":

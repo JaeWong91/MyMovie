@@ -28,9 +28,8 @@ nav .brand-logo {
     padding-left: 20px;
 }
 
-nav ul a,
-.btn-large {
-    color: white;
+nav ul a {
+    color: #e64a19;
     font-weight: 700;
 }
 
@@ -85,3 +84,4 @@ nav ul a,
     color: white;
     background-color: red;
 }
+
