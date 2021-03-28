@@ -122,16 +122,33 @@ def add_movie():
         }
         mongo.db.movies.insert_one(movie) #here we insert the variable "movie" into insert_one()
         flash("Movie Successfully Added")
-        return redirect(url_for("get_movies"))
+        return redirect(url_for("movie_page", movie_name=request.form.get("movie_name"))) 
         # IMPORTANT WORK IN PROGRESS - Here will need to add the REVIEWS database and link it with the MOVIES database
     return render_template("add_movie.html")
 
 
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
 def edit_movie(movie_id):
+    if request.method == "POST":
+        submit = {
+            "movie_name": request.form.get("movie_name"),
+            "year": request.form.get("year"),
+            "genre": request.form.get("genre"),
+            #if genre was a checkbox selection, 
+            #will need to use "request.form.getlist('genre')"
+            "director": request.form.get("director"),
+            "cast": request.form.get("cast"),
+            "image": request.form.get("image")
+        }
+        mongo.db.movies.update({"_id": ObjectId(movie_id)}, submit)
+        # update method takes 2 parameters, both of which are dictionaries. 
+        # This line here searches for the movie in the database by the movie_id, 
+        # once found it will update the movie with the "submit" dictionary which contains all the form elements 
+        flash("Movie Successfully Edited")
+
     # the "_id" is whats on mongodb and in a bson data type(string of letters and nums)
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-    return render_template("edit_movie.html", movie=movie)
+    return render_template("edit_movie.html", movie=movie) #Not sure how to redirect back to "movie_page.html" for specific movie
 
 
 # adding this myself

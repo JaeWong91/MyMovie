@@ -17,8 +17,10 @@
                     <p><b>Genre</b>: {{ get_movie.genre }}</p>
                     <p><b>Director(s)</b>: {{ get_movie.director }}</p>
                     <p><b>Cast</b>: {{ get_movie.cast }}</p>
-                    <a href="{{ url_for('edit_movie', movie_id=get_movie._id ) }}" class="waves-effect waves-light btn-small">Edit Movie Details</a>
-                    <a href="" class="waves-effect waves-light btn-small">Delete</a>
+                    {% if session.user == admin %}
+                        <a href="{{ url_for('edit_movie', movie_id=get_movie._id ) }}" class="waves-effect waves-light btn-small">Edit Movie Details</a>
+                        <a href="" class="waves-effect waves-light btn-small">Delete</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
