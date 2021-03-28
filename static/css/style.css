@@ -10,6 +10,10 @@ h3 {
     font-family: "Chango", sans-serif;
 }
 
+.movie-heading {
+    margin-bottom: 30px;
+}
+
 
 /* --- navbar, form icons ---- */
 nav, 
@@ -26,7 +30,7 @@ nav .brand-logo {
 
 nav ul a,
 .btn-large {
-    color: #e64a19;
+    color: white;
     font-weight: 700;
 }
 
@@ -75,4 +79,9 @@ nav ul a,
 /* --- Buttons --- */
 .btn-small {
     margin: 5px;;
+}
+
+.btn-large .cancel-button {
+    color: white;
+    background-color: red;
 }
