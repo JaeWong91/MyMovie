@@ -114,7 +114,7 @@ def add_movie():
             "movie_name": request.form.get("movie_name"),
             "year": request.form.get("year"),
             "genre": request.form.get("genre"),
-            #if this was a checkbox selection, 
+            #if genre was a checkbox selection, 
             #will need to use "request.form.getlist('genre')"
             "director": request.form.get("director"),
             "cast": request.form.get("cast"),
@@ -127,10 +127,17 @@ def add_movie():
     return render_template("add_movie.html")
 
 
+@app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
+def edit_movie(movie_id):
+    # the "_id" is whats on mongodb and in a bson data type(string of letters and nums)
+    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+    return render_template("edit_movie.html", movie=movie)
+
+
 # adding this myself
 @app.route("/movie_page/<movie_name>")
 def movie_page(movie_name):
-    # page redirect to the particular movie
+    # page redirect to the particular movie on click from movie list page
     get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
     return render_template("movie_page.html", get_movie=get_movie)
 

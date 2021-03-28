@@ -10,13 +10,8 @@ h3 {
     font-family: "Chango", sans-serif;
 }
 
-/*.text-shadow {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-}
-*/
 
-
-/* navbar, form icons will all be orange colour */
+/* --- navbar, form icons ---- */
 nav, 
 .form-icon,
 i {
@@ -39,7 +34,7 @@ nav ul a,
     color: #e64a19;
 }
 
-/* registration form */
+/* ---- registration form ----*/
 .registration-form {
     color: black;
 }
@@ -50,7 +45,7 @@ nav ul a,
 
 }
 
-/* flash messages */
+/* ---- flash messages ----*/
 .flashes h4 {
     color: #b2dfdb;
     line-height: 2;
@@ -68,11 +63,16 @@ nav ul a,
     background-color: #3b4d57;
 }
 
-
+/* ---- Movie List Styling ---- */
 .movie-item {
     display: block;
     border-color: white ;
     border-width: 5px;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+/* --- Buttons --- */
+.btn-small {
+    margin: 5px;;
 }
