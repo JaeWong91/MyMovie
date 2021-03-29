@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 
 body {
     background-color: #263238;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-h3 {
+h3,
+h4 {
     color: #e64a19;
-    font-family: "Chango", sans-serif;
+    font-family: "Squada One", sans-serif;
 }
 
 .movie-heading {
@@ -24,13 +26,15 @@ i {
 
 nav .brand-logo {
     color: #e64a19;
-    font-family: "Chango", sans-serif;
+    font-family: "Squada One", sans-serif;
     padding-left: 20px;
 }
 
 nav ul a {
     color: #e64a19;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: "Squada One", sans-serif;
+    font-size: 20px;
 }
 
 .sidenav-trigger {

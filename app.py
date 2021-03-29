@@ -33,6 +33,13 @@ def get_movies():
     return render_template("movies.html", movies=movies)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    movies = list(mongo.db.movies.find({"$text": {"$search": query}}))
+    return render_template("movies.html", movies=movies)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -119,6 +126,14 @@ def movie_page(movie_name):
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     if request.method == "POST":
+        #Check if movie exists
+        existing_movie = mongo.db.movies.find_one(    #add this myself
+            {"movie_name": request.form.get("movie_name").lower()}) #add this myself
+
+        if existing_movie: #add this myself
+            flash("Movie already exists")   #add this myself
+            return redirect(url_for("add_movie"))   #add this myself
+
         movie = {
             "movie_name": request.form.get("movie_name"),
             "year": request.form.get("year"),
