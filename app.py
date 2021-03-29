@@ -25,10 +25,11 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/") # 
+@app.route("/") 
 @app.route("/get_movies")
 def get_movies():
-    movies = list(mongo.db.movies.find())
+    # This will sort the movie list alphabetically in list page
+    movies = list(mongo.db.movies.find().sort("movie_name", 1))
     return render_template("movies.html", movies=movies)
 
 

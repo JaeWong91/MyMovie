@@ -7,10 +7,10 @@
     {% for movie in movies %}
     <a href="{{ url_for('movie_page', movie_name=movie.movie_name) }}"> <!-- This is for redirecting to the individual movie page -->
     <div class="row movie-item">
-        <div class="col s12 m4 center-align">
+        <div class="col s12 m4 center-align valign-wrapper">
             <img src="{{ movie.image }}" alt="">
         </div>
-        <div class="col s12 m8">
+        <div class="col s12 m8 white-text">
             <strong>{{ movie.movie_name }}</strong> <span>&nbsp({{ movie.year }})</span>
             <!--"&nbsp" forces a space-->
             <p><b>Genre</b>: {{ movie.genre }}</p>
@@ -20,6 +20,5 @@
     </div>
     </a>
     {% endfor %}
-
 
 {% endblock %}

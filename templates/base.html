@@ -22,13 +22,16 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
+                    <!-- Need to make this admin only! -->
+                    {% if session.user|lower == "admin"|lower %}
+                        <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
+                    {% endif %}
                     {% if session.user %} <!-- if user is logged in. i.e if user is in current session then the below will appear-->
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %} <!-- if user is not logged in, then the below will appear-->
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                        <li><a href="{{ url_for('register') }}">Register</a></li>3
                     {% endif %}
                 </ul>
             </div>
@@ -37,15 +40,18 @@
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
-            {% if session.user %} <!-- if user is logged in. i.e if user is in current session then the below will appear-->
-                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% else %} <!-- if user is not logged in, then the below will appear-->
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
+                <li><a href="{{ url_for('get_movies') }}">Movies</a></li>
+                <!-- Need to make this admin only! -->
+                {% if session.user|lower == "admin"|lower %}
+                    <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
+                {% endif %}
+                {% if session.user %} <!-- if user is logged in. i.e if user is in current session then the below will appear-->
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %} <!-- if user is not logged in, then the below will appear-->
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>3
+                {% endif %}
         </ul>
     </header>
 

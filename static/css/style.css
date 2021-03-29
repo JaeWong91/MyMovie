@@ -69,10 +69,13 @@ nav ul a {
 /* ---- Movie List Styling ---- */
 .movie-item {
     display: block;
-    border-color: white ;
-    border-width: 5px;
+    border-style: double;
+    border-color: rgba(231, 160, 68, 0.171) ;
+    border-width: 3px;
     margin-bottom: 10px;
     margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* --- Buttons --- */
