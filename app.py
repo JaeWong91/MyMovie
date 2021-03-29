@@ -127,12 +127,14 @@ def movie_page(movie_name):
 def add_movie():
     if request.method == "POST":
         #Check if movie exists
-        existing_movie = mongo.db.movies.find_one(    #add this myself
-            {"movie_name": request.form.get("movie_name").lower()}) #add this myself
+        #add this myself, unable to make it work without case sensitivity
+        existing_movie = mongo.db.movies.find_one(
+            {"movie_name": request.form.get("movie_name")})
 
-        if existing_movie: #add this myself
-            flash("Movie already exists")   #add this myself
-            return redirect(url_for("add_movie"))   #add this myself
+        if existing_movie:
+            #add this myself
+            flash("Movie already exists")
+            return redirect(url_for("add_movie"))
 
         movie = {
             "movie_name": request.form.get("movie_name"),
