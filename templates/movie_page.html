@@ -47,5 +47,42 @@
     <div class="center-align">
         REVIEWS
     </div>
+    {% if session.user %}
+    <!-- materialize text area-->
+    <div class="row container">
+        <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
+            <div class="row">
+                <!-- rating slider -->
+                <p class="range-field container">
+                    <input type="range" id="rating" name="rating" min="1" max="10" step="0.5" 
+                        value="5" oninput="nextElementSibling.value = this.value" required>
+                    <output>5</output>
+                </p>
+                <!-- review description -->
+                <div class="input-field col s12">
+                    <textarea id="review_description" name="review_description" minlength="10" 
+                        maxlength="500" class="materialize-textarea" required></textarea>
+                    <label for="review_description">Write your review here.</label>
+                </div>
+                <div class="align-center"><button class="waves-effect waves-light btn-small" type="submit">Submit</button></div>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+    <!-- Existing Reviews -->
+    <div class="center-align container">
+        
+        {% if reviews.movie_name == get_movie.movie_name %}
+            {% for review in reviews %}
+                
+                <p>{{ reviews.review_description }} </p>
+                <p><em>Reviewed by: {{ reviews.by_user }}</em></p>
+                <hr>
+            {% endfor %}
+        {% endif %}
+      
+        
+    </div>
 
 {% endblock %}

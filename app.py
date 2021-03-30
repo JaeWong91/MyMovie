@@ -120,7 +120,9 @@ def logout():
 def movie_page(movie_name):
     # page redirect to the particular movie on click from movie list page
     get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
-    return render_template("movie_page.html", get_movie=get_movie)
+    reviews = mongo.db.reviews.find_one()
+    return render_template("movie_page.html", 
+        get_movie=get_movie, reviews=reviews)
 
 
 @app.route("/add_movie", methods=["GET", "POST"])
@@ -182,6 +184,23 @@ def delete_movie(movie_id):
     mongo.db.movies.remove({"_id": ObjectId(movie_id)})
     flash("Movie Successfully Removed")
     return redirect(url_for("get_movies"))
+
+
+#adding review function not working!!!
+@app.route("/movie_page/<movie_name>", methods=["POST"])
+def add_review(movie_name):
+    print("IN THE METHOD")
+    if request.method == "POST":
+        print("IN THE POST PART")
+        review = {
+            "movie_name": movie_name,
+            "review_description": request.form.get("review_description"),
+            "by_user": session["user"]
+        }
+        mongo.db.reviews.insert_one(review)
+
+    flash("Your review was added")
+    return redirect(url_for("movie_page", movie_name=movie_name))
 
 
 if __name__ == "__main__":

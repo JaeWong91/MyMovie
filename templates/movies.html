@@ -3,6 +3,7 @@
 
     <h3 class="center-align">Movies</h3>
 
+    <!-- Search Bar-->
     <div class="row card_panel grey lighten-5">
         <form action="{{ url_for('search') }}" method="post" class="col s12 blue-grey darken-3">
             <div class="row valign-wrapper center-align">
@@ -14,13 +15,14 @@
                 <div class="col s12 m4">
                     <a href="{{ url_for('get_movies') }}" class="red btn-small text-shadow">Reset</a>
                     <button type="submit" class="btn-small waves-effect waves-light">
-                        <i class="fas fa-search left"></i> Search
+                        <i class="fas fa-search left white-text"></i> Search
                     </button>
                 </div>
             </div>
         </form>
     </div>
 
+    <!--List of movies-->
     {% if movies|length > 0 %}
     {% for movie in movies %}
     <a href="{{ url_for('movie_page', movie_name=movie.movie_name) }}"> <!-- This is for redirecting to the individual movie page -->
