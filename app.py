@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime # this taken from https://www.codegrepper.com/code-examples/python/datetime+today
 if os.path.exists("env.py"):
     import env
 
@@ -191,11 +192,14 @@ def delete_movie(movie_id):
 def add_review(movie_name):
     print("IN THE METHOD")
     if request.method == "POST":
+        now = datetime.now()
         print("IN THE POST PART")
         review = {
             "movie_name": movie_name,
+            "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
-            "by_user": session["user"]
+            "by_user": session["user"],
+            "review_date": now.strftime("%d-%m-%Y %H:%M")
         }
         mongo.db.reviews.insert_one(review)
 

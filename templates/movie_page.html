@@ -52,10 +52,10 @@
                 <!-- rating slider -->
                 <p class="col s12 center-align rating-box">Rate this Movie</p>
                 <p class="range-field container">
-                    <input type="range" id="rating" name="rating" min="1" max="10" step="0.1" 
+                    <input type="range" id="review_slider" name="review_slider" min="1" max="10" step="1" 
                         value="5" oninput="nextElementSibling.value = this.value" 
                             class="rating-slider" required>
-                    <output class="col s12 center-align" id="rating-display">5</output> <!--Work on getting this to change with the slider -->
+                    <div type="text" class="col s12 center-align" id="review_rating" name="review_rating">5</div> <!--Work on getting this to change with the slider -->
                 </p>
                 <!-- review description -->
                 <div class="container review-desc-box">
@@ -79,8 +79,9 @@
         
         {% for review in reviews %}
             {% if review.movie_name == get_movie.movie_name %}
+                <p>{{ review.review_rating }}</p>
                 <p>{{ review.review_description }} </p>
-                <p><em>Reviewed by: {{ review.by_user }}</em></p>
+                <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em></p>
                 <hr>
             {% endif %}
         {% endfor %}
