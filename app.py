@@ -120,7 +120,7 @@ def logout():
 def movie_page(movie_name):
     # page redirect to the particular movie on click from movie list page
     get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
-    reviews = mongo.db.reviews.find_one()
+    reviews = list(mongo.db.reviews.find({"movie_name": movie_name}))
     return render_template("movie_page.html", 
         get_movie=get_movie, reviews=reviews)
 

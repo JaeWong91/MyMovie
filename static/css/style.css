@@ -92,3 +92,9 @@ nav ul a {
     background-color: red;
 }
 
+
+/* -- Rating and Review desc box -- */
+.rating-box {
+    width: 400px;
+    
+}

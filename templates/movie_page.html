@@ -44,27 +44,31 @@
             </div>
         </div>
     </div>
-    <div class="center-align">
-        REVIEWS
-    </div>
     {% if session.user %}
     <!-- materialize text area-->
     <div class="row container">
         <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
             <div class="row">
                 <!-- rating slider -->
+                <p class="col s12 center-align rating-box">Rate this Movie</p>
                 <p class="range-field container">
-                    <input type="range" id="rating" name="rating" min="1" max="10" step="0.5" 
-                        value="5" oninput="nextElementSibling.value = this.value" required>
-                    <output>5</output>
+                    <input type="range" id="rating" name="rating" min="1" max="10" step="0.1" 
+                        value="5" oninput="nextElementSibling.value = this.value" 
+                            class="rating-slider" required>
+                    <output class="col s12 center-align" id="rating-display">5</output> <!--Work on getting this to change with the slider -->
                 </p>
                 <!-- review description -->
-                <div class="input-field col s12">
-                    <textarea id="review_description" name="review_description" minlength="10" 
-                        maxlength="500" class="materialize-textarea" required></textarea>
-                    <label for="review_description">Write your review here.</label>
+                <div class="container review-desc-box">
+                    <div class="input-field col s12">
+                        <textarea id="review_description" name="review_description" minlength="10" 
+                            maxlength="500" class="materialize-textarea white-text" required></textarea>
+                        <label for="review_description">Write your review here.</label>
+                    </div>
+                    <div class="col s12 center-align">
+                        <button class="waves-effect waves-light btn-small center-align" 
+                        type="submit">Submit</button>
+                    </div>
                 </div>
-                <div class="align-center"><button class="waves-effect waves-light btn-small" type="submit">Submit</button></div>
             </div>
         </form>
     </div>
@@ -73,14 +77,13 @@
     <!-- Existing Reviews -->
     <div class="center-align container">
         
-        {% if reviews.movie_name == get_movie.movie_name %}
-            {% for review in reviews %}
-                
-                <p>{{ reviews.review_description }} </p>
-                <p><em>Reviewed by: {{ reviews.by_user }}</em></p>
+        {% for review in reviews %}
+            {% if review.movie_name == get_movie.movie_name %}
+                <p>{{ review.review_description }} </p>
+                <p><em>Reviewed by: {{ review.by_user }}</em></p>
                 <hr>
-            {% endfor %}
-        {% endif %}
+            {% endif %}
+        {% endfor %}
       
         
     </div>
