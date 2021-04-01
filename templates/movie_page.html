@@ -48,7 +48,6 @@
     </div>
 
     <!-- Adding a Review-->
-    
     {% if session.user %}
     <!-- materialize text area-->
     <div class="row container">
@@ -88,7 +87,7 @@
                 <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em></p>
                 {% if review.by_user == session.user or session.user|lower == "admin"|lower%}
                     <div class="row">
-                        <a href="" class="btn-small">Edit Review</a>
+                        <a href="{{ url_for('edit_review', review_id=review._id ) }}" class="btn-small">Edit Review</a>
                         <a href="{{ url_for('delete_review', review_id=review._id ) }}" class="btn-small">Delete Review</a>
                     </div>
                     <hr>

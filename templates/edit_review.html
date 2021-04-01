@@ -1,69 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m6 offset-m3">
-            <div class="">
-                <h4 class="center-align movie-heading">
-                    {{ get_movie.movie_name }} 
-                </h4>
-            </div>
-            <div class="row">
-                <div class="col s12 m4 center-align">
-                    <img src="{{ get_movie.image }}" alt="Movie Image">
-                </div>
-                <div class="col s12 m8 left-align">
-                    <p><b>Year</b>: {{ get_movie.year }}</p>
-                    <p><b>Genre</b>: {{ get_movie.genre }}</p>
-                    <p><b>Director(s)</b>: {{ get_movie.director }}</p>
-                    <p><b>Cast</b>: {{ get_movie.cast }}</p>
-                    
-                    <!-- only visible for "admin" -->
-                    {% if session.user|lower == "admin"|lower %}
-                    <!-- Edit and Delete movie buttons -->
-                    <a href="{{ url_for('edit_movie', movie_id=get_movie._id ) }}" class="waves-effect waves-light btn-small">Edit Movie
-                        Details</a>
-
-                    <!-- Modal Trigger -->
-                    <button data-target="modal1" class="waves-effect waves-light btn-small modal-trigger">Delete Movie</button>
-
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal blue-grey lighten-4 red-text center-align">
-                        <div class="modal-content">
-                            <h4><b>WARNING</b></h4>
-                            <h5><b>Are you sure you wish to delete this Movie? This action is irreversible.</b></h5>
-                        </div>
-                        <div class=" center-align">
-                            <a href="{{ url_for('delete_movie', movie_id=get_movie._id ) }}"
-                                class="waves-effect waves-light btn-small">DELETE</a>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
     {% if session.user %}
+    <div>
+        <h4 class="center-align movie-heading">
+            {{ review.movie_name }}
+        </h4>
+    </div>
     <!-- materialize text area-->
     <div class="row container">
-        <form method="POST" action="{{ url_for('edit_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
+        <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
             <div class="row">
                 <!-- rating slider -->
                 <p class="col s12 center-align rating-box">Rate this Movie</p>
                 <p class="range-field container">
                     <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" 
-                        value="5" oninput="nextElementSibling.value = this.value" 
+                        value="{{ review.review_rating }}" oninput="nextElementSibling.value = this.value" 
                             class="rating-slider" required>
                     <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div> <!--Work on getting this to change with the slider -->
                 </p>
                 <!-- review description -->
                 <div class="container review-desc-box">
                     <div class="input-field col s12">
+                        <input type="text" value="{{ review.movie_name }}" id="movie_name" name="movie_name" class="hide"></p>
                         <textarea id="review_description" name="review_description" minlength="10" 
-                            maxlength="500" class="materialize-textarea white-text" required></textarea>
-                        <label for="review_description">Write your review here.</label>
+                            maxlength="500" class="materialize-textarea white-text" 
+                            value="{{ review.review_description }}" required>{{ review.review_description }}</textarea>
+                        <!-- <label for="review_description">Edit your review here.</label> -->
+                        <p id="{{ review.by_user }}"></p>
                     </div>
+                    <a href="{{ url_for('get_movies') }}" 
+                            class="btn-large red">
+                            Cancel <i class="fas fa-times-circle right white-text "></i></a>  
+                    <!-- submit button -->
                     <div class="col s12 center-align">
                         <button class="waves-effect waves-light btn-small center-align" 
                         type="submit">Submit</button>

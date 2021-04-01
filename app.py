@@ -210,6 +210,24 @@ def add_review(movie_name):
     return redirect(url_for("movie_page", movie_name=movie_name))
 
 
+# Edit Review
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        now = datetime.now()
+        submit = {
+            "movie_name": request.form.get("movie_name"), # should this be movies._id instead?
+            "review_rating": request.form.get("review_rating"),
+            "review_description": request.form.get("review_description"),
+            "by_user": session["user"],
+            "review_date": now.strftime("%d-%m-%Y %H:%M")
+        }
+        mongo.db.reviews.update({"_id": ObjectId(review_id)},submit)
+        flash("Review successfully edited")
+        return redirect(url_for("get_movies"))
+
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template("edit_review.html", review=review)
 
 
 # Delete Review
