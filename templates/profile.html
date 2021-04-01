@@ -9,6 +9,34 @@
                 </h3>
             </div>
         </div>
+        <div class="col s12 m6 offset-m3">
+            <div class="">
+                <h4 class="center-align">
+                    Your Reviews
+                </h4>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container col s12 center-align">
+        
+    {% for review in reviews %}
+        {% if review.by_user == session.user %}
+            {% if review.movie_name == movies.movie_name %}
+                <img src="{{ movie.image }}" alt="Movie Image">
+            {% endif %}
+            <p>Movie: {{ review.movie_name }}</p>
+            <p>Rating: {{ review.review_rating }}</p>
+            <p>{{ review.review_description }} </p>
+            <p><em>Review Date: {{ review.review_date }}</em> by <b>{{ review.by_user }}</b></p> <!-- REMOVE THE REVIEWED BY HERE ON PROFILE PAGE!! -->
+            <div class="row">
+                    <a href="" class="btn-small">Edit Review</a>
+                    <a href="{{ url_for('delete_review_profile', review_id=review._id ) }}" class="btn-small">Delete Review</a>
+                </div>
+            <hr>
+        {% endif %}
+    {% endfor %}
     </div>
 
 {% endblock %}

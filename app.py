@@ -5,12 +5,13 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime # this taken from https://www.codegrepper.com/code-examples/python/datetime+today
+from datetime import datetime
+# this taken from https://www.codegrepper.com/code-examples/python/datetime+today
 if os.path.exists("env.py"):
     import env
 
 
-app = Flask(__name__) # create instance of Flask in a variable called "app"
+app = Flask(__name__)  # create instance of Flask in a variable called "app"
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -20,13 +21,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/") # the forward slash "/" refers to the default route
+@app.route("/")  # the forward slash "/" refers to the default route
 @app.route("/home")
 def home():
     return render_template("home.html")
 
 
-@app.route("/") 
+@app.route("/")
 @app.route("/get_movies")
 def get_movies():
     # This will sort the movie list alphabetically in list page
@@ -34,7 +35,7 @@ def get_movies():
     return render_template("movies.html", movies=movies)
 
 
-@app.route("/search", methods=["GET", "POST"])
+@app.route("/get_movies/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
     movies = list(mongo.db.movies.find({"$text": {"$search": query}}))
@@ -74,7 +75,7 @@ def login():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            #ensure hashed password matches user input
+            # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
@@ -98,11 +99,13 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     #grab the session user's username from the db
+    reviews = mongo.db.reviews.find()
+    movies = mongo.db.movies.find()
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, reviews=reviews, movies=movies)
         # we need to pass the "username" variable here
 
     return redirect(url_for("login"))
@@ -120,12 +123,14 @@ def logout():
 @app.route("/movie_page/<movie_name>")
 def movie_page(movie_name):
     # page redirect to the particular movie on click from movie list page
+    # obtain specific movie and list of all reviews for that movie
     get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
     reviews = list(mongo.db.reviews.find({"movie_name": movie_name}))
     return render_template("movie_page.html", 
         get_movie=get_movie, reviews=reviews)
 
 
+# Add Movie
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     if request.method == "POST":
@@ -180,22 +185,20 @@ def edit_movie(movie_id):
     return render_template("edit_movie.html", movie=movie) #Not sure how to redirect back to "movie_page.html" for specific movie
 
 
+# Delete Movie
 @app.route("/movie_page/delete_movie/<movie_id>")
 def delete_movie(movie_id):
     mongo.db.movies.remove({"_id": ObjectId(movie_id)})
     flash("Movie Successfully Removed")
     return redirect(url_for("get_movies"))
 
-
-#adding review function not working!!!
+# Add Review
 @app.route("/movie_page/<movie_name>", methods=["POST"])
 def add_review(movie_name):
-    print("IN THE METHOD")
     if request.method == "POST":
         now = datetime.now()
-        print("IN THE POST PART")
         review = {
-            "movie_name": movie_name,
+            "movie_name": movie_name, # should this be movies._id instead?
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
             "by_user": session["user"],
@@ -205,6 +208,24 @@ def add_review(movie_name):
 
     flash("Your review was added")
     return redirect(url_for("movie_page", movie_name=movie_name))
+
+
+
+
+# Delete Review
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash("Review Successfuly Removed")
+    return redirect(request.referrer) # This line taken from https://stackoverflow.com/questions/41270855/flask-redirect-to-same-page-after-form-submission
+
+
+# Delete Review from Profile
+@app.route("/delete_review_profile/<review_id>")
+def delete_review_profile(review_id):
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash("Review Successfuly Removed")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 if __name__ == "__main__":

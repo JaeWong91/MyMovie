@@ -31,9 +31,7 @@
                     <div id="modal1" class="modal blue-grey lighten-4 red-text center-align">
                         <div class="modal-content">
                             <h4><b>WARNING</b></h4>
-                            <h5>Are you sure you wish to delete the movie: <br><br> <strong>"{{ get_movie.movie_name }}"</strong> ? 
-                                <br><br>This action is irreversible.
-                            </h5>
+                            <h5><b>Are you sure you wish to delete this Movie? This action is irreversible.</b></h5>
                         </div>
                         <div class=" center-align">
                             <a href="{{ url_for('delete_movie', movie_id=get_movie._id ) }}"
@@ -46,13 +44,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Adding a Review-->
-    
     {% if session.user %}
     <!-- materialize text area-->
     <div class="row container">
-        <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
+        <form method="POST" action="{{ url_for('edit_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
             <div class="row">
                 <!-- rating slider -->
                 <p class="col s12 center-align rating-box">Rate this Movie</p>
@@ -78,23 +73,5 @@
         </form>
     </div>
     {% endif %}
-
-    <!-- Existing Reviews -->
-    <div class="center-align container">
-        {% for review in reviews %}
-            {% if review.movie_name == get_movie.movie_name %}
-                <p>Rating: {{ review.review_rating }}</p>
-                <p>{{ review.review_description }} </p>
-                <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em></p>
-                {% if review.by_user == session.user or session.user|lower == "admin"|lower%}
-                    <div class="row">
-                        <a href="" class="btn-small">Edit Review</a>
-                        <a href="{{ url_for('delete_review', review_id=review._id ) }}" class="btn-small">Delete Review</a>
-                    </div>
-                    <hr>
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
 
 {% endblock %}
