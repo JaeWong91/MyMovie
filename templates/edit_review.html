@@ -13,10 +13,10 @@
             <div class="row">
                 <!-- rating slider -->
                 <p class="col s12 center-align rating-box">Rate this Movie</p>
-                <p class="range-field container">
+                <p class=" container center-align">
                     <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" 
                         value="{{ review.review_rating }}" oninput="nextElementSibling.value = this.value" 
-                            class="rating-slider" required>
+                            class="rating-slider center-align" required>
                     <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div> <!--Work on getting this to change with the slider -->
                 </p>
                 <!-- review description -->

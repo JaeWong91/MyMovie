@@ -75,7 +75,7 @@ nav ul a {
     display: block;
     border-style: double;
     border-color: rgba(231, 160, 68, 0.171) ;
-    border-width: 3px;
+    border-width: 4px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding-top: 10px;
@@ -86,10 +86,10 @@ nav ul a {
 .review-item {
     display: block;
     border-style: solid;
-    border-color: rgba(48, 177, 252, 0.171) ;
-    border-width: 2px;
-    margin-bottom: 6px;
-    margin-top: 6px;
+    border-color: #e64a19;
+    border-width: 1px;
+    margin-bottom: 8px;
+    margin-top: 8px;
     padding-top: 6px;
     padding-bottom: 6px;
 }
