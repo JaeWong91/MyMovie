@@ -82,6 +82,25 @@ nav ul a {
     padding-bottom: 10px;
 }
 
+/* ---- Review List Styling ---- */
+.review-item {
+    display: block;
+    border-style: solid;
+    border-color: rgba(48, 177, 252, 0.171) ;
+    border-width: 2px;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+/* --- rating slider --- */
+input[type=range]{
+    width: 60%;
+    align-content: center;
+    align-items: center;
+}
+
 /* --- Buttons --- */
 .btn-small {
     margin: 5px;;

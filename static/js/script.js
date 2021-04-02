@@ -6,7 +6,7 @@ $(document).ready(function () {
     M.textareaAutoResize($('#textarea1'));
 });
 
-// Movie Rating Slider 
+// Movie Rating Slider - Taken from w3 schools
 var slider = document.getElementById("review_rating");
 var output = document.getElementById("review_output");
 output.innerHTML = slider.value; // Display the default slider value

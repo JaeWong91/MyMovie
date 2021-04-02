@@ -9,10 +9,10 @@
                 </h4>
             </div>
             <div class="row">
-                <div class="col s12 m4 center-align">
+                <div class="col s12 m12 l4 center-align">
                     <img src="{{ get_movie.image }}" alt="Movie Image">
                 </div>
-                <div class="col s12 m8 left-align">
+                <div class="col s12 m12 l8 left-align">
                     <p><b>Year</b>: {{ get_movie.year }}</p>
                     <p><b>Genre</b>: {{ get_movie.genre }}</p>
                     <p><b>Director(s)</b>: {{ get_movie.director }}</p>
@@ -25,7 +25,7 @@
                         Details</a>
 
                     <!-- Modal Trigger -->
-                    <button data-target="modal1" class="waves-effect waves-light btn-small modal-trigger">Delete Movie</button>
+                    <button data-target="modal1" class="red waves-effect waves-light btn-small modal-trigger">Delete Movie</button>
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal blue-grey lighten-4 red-text center-align">
@@ -50,16 +50,16 @@
     <!-- Adding a Review-->
     {% if session.user %}
     <!-- materialize text area-->
-    <div class="row container">
+    <div class="row container center-align">
         <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
             <div class="row">
                 <!-- rating slider -->
                 <p class="col s12 center-align rating-box">Rate this Movie</p>
                 <p class="range-field container">
+                    <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div> 
                     <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" 
                         value="5" oninput="nextElementSibling.value = this.value" 
                             class="rating-slider" required>
-                    <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div> <!--Work on getting this to change with the slider -->
                 </p>
                 <!-- review description -->
                 <div class="container review-desc-box">
@@ -79,21 +79,23 @@
     {% endif %}
 
     <!-- Existing Reviews -->
-    <div class="center-align container">
+    
         {% for review in reviews %}
+        <div class="center-align container review-item blue-grey darken-3 white-text">
             {% if review.movie_name == get_movie.movie_name %}
-                <p>Rating: {{ review.review_rating }}</p>
-                <p>{{ review.review_description }} </p>
+                <p>Rating: {{ review.review_rating }} out of 10</p>
+                <p>"{{ review.review_description }}" </p>
                 <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em></p>
                 {% if review.by_user == session.user or session.user|lower == "admin"|lower%}
                     <div class="row">
-                        <a href="{{ url_for('edit_review', review_id=review._id ) }}" class="btn-small">Edit Review</a>
+                        <a href="{{ url_for('edit_review', review_id=review._id ) }}" 
+                            class="btn-small"><i class="fas fa-edit white-text left"></i>Edit Review</a>
                         <a href="{{ url_for('delete_review', review_id=review._id ) }}" class="btn-small">Delete Review</a>
                     </div>
-                    <hr>
                 {% endif %}
             {% endif %}
+        </div>
         {% endfor %}
-    </div>
+    
 
 {% endblock %}
