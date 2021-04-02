@@ -6,6 +6,10 @@ $(document).ready(function () {
     M.textareaAutoResize($('#textarea1'));
 });
 
+function goBack() {
+  window.history.back();
+}
+
 // Movie Rating Slider - Taken from w3 schools
 var slider = document.getElementById("review_rating");
 var output = document.getElementById("review_output");

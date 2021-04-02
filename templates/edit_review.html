@@ -29,12 +29,14 @@
                         <!-- <label for="review_description">Edit your review here.</label> -->
                         <p id="{{ review.by_user }}"></p>
                     </div>
-                    <a href="{{ url_for('movie_page', movie_name=review.movie_name) }}" 
-                            class="btn-large red">
-                            Cancel <i class="fas fa-times-circle right white-text "></i></a>  
-                    <!-- submit button -->
-                    <div class="col s12 center-align">
-                        <button class="waves-effect waves-light btn-small center-align" 
+                    
+                    <!-- review buttons -->
+                    <div class="col s12 center-align"> 
+                        <!-- Cancel button -->
+                        <a href="{{ url_for('movie_page', movie_name=review.movie_name) }}" class="btn-small">
+                            Cancel <i class="fas fa-times-circle right white-text "></i></a>
+                        <!-- Submit Edit button -->
+                        <button class="waves-effect waves-light btn-small center-align green" 
                         type="submit">Submit</button>
                     </div>
                 </div>

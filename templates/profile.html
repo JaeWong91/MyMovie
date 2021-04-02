@@ -30,7 +30,7 @@
                     <p><em>Review Date: {{ review.review_date }}</em> by <b>{{ review.by_user }}</b></p>
                     <!-- REMOVE THE REVIEWED BY HERE ON PROFILE PAGE!! -->
                     <div class="row">
-                        <a href="" class="btn-small">Edit Review</a>
+                        <a href="{{ url_for('edit_review', review_id=review._id ) }}" class="btn-small">Edit Review</a>
 
                         <!-- Modal Trigger for deleting review-->
                         <button data-target="#confirm-delete-{{ review._id }}" class="red waves-effect waves-light btn-small modal-trigger">Delete Review</button> <!--add this myself-->
@@ -44,8 +44,9 @@
                                 </h5>
                             </div>
                             <div class=" center-align">
-                                <a href="{{ url_for('delete_review', review_id=review._id ) }}" class="btn-small">Delete Review</a>
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                                <a href="#!" class="modal-close waves-effect waves-green btn-small">CANCEL</a>
+                                <a href="{{ url_for('delete_review', review_id=review._id ) }}" 
+                                    class="btn-small red">Delete Review</a>
                             </div>
                         </div>
 
