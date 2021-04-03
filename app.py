@@ -99,7 +99,7 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     #grab the session user's username from the db
-    reviews = mongo.db.reviews.find()
+    reviews = mongo.db.reviews.find().sort("review_date", -1)
     movies = mongo.db.movies.find()
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -125,7 +125,7 @@ def movie_page(movie_name):
     # page redirect to the particular movie on click from movie list page
     # obtain specific movie and list of all reviews for that movie
     get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
-    reviews = list(mongo.db.reviews.find({"movie_name": movie_name}))
+    reviews = list(mongo.db.reviews.find({"movie_name": movie_name}).sort("review_date", -1))
     return render_template("movie_page.html", 
         get_movie=get_movie, reviews=reviews)
 
