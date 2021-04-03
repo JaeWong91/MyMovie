@@ -47,11 +47,11 @@
         </div>
     </div>
 
-    <!-- Adding a Review-->
+    <!-- Adding a Review only if logged in -->
     {% if session.user %}
         <!-- materialize text area-->
         <div class="row container center-align">
-            <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
+            <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12">
                 <div class="row">
                     <!-- rating slider -->
                     <p class="col s12 center-align rating-box">Rate this Movie</p>
@@ -95,13 +95,14 @@
                         class="btn-small"><i class="fas fa-edit white-text left"></i>Edit Review</a>
 
                     <!-- Modal Trigger for deleting review-->
-                    <button data-target="#confirm-delete-{{ review._id }}" class="red waves-effect waves-light btn-small modal-trigger">Delete Review</button>
+                    <button data-target="#confirm-delete-{{ review._id }}" 
+                        class="red waves-effect waves-light btn-small modal-trigger">Delete Review</button>
                     <!-- Modal Structure -->
                     <div id="#confirm-delete-{{ review._id }}" class="modal blue-grey lighten-4 red-text center-align">
                         <div class="modal-content">
                             <h4><b>WARNING</b></h4>
                             <h5>Are you sure you wish to delete your review for <b>{{ review.movie_name }}</b>:
-                                <br> "{{ review.review_description }}" ?
+                                <br><br> "{{ review.review_description }}" ?
                                 <br><br>This action is irreversible.
                             </h5>
                         </div>
