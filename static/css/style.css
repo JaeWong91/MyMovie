@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&display=swap');
 
 body {
-    background-color: #263238;
+    background-color: #161d20;
     color: rgba(255, 255, 255, 0.9);
     font-family: 'Encode Sans', sans-serif;
 }
@@ -33,7 +33,7 @@ i {
 nav .brand-logo {
     color: #e64a19;
     font-family: "Squada One", sans-serif;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 nav ul a {
@@ -123,8 +123,13 @@ input[type=range]{
 
 /* -- Home page background image -- */
 /* This code credited to - https://stackoverflow.com/questions/23254346/how-can-i-change-background-image-opacity-without-changing-on-div-content*/
-#home-background:after {    
+.home-background {
+    background-color: black;
+}
+
+#home-bg-image:after {    
     background: url('/static/images/home-bg-2.jpg') no-repeat center center;
+    background-color: black;
     content: "";
     position: absolute;
     background-size: cover;
@@ -136,5 +141,5 @@ input[type=range]{
 }
 
 .search-label {  /* - use @mediaquery to hide on small devices as it can get overcrowded. - */
-    display: none;
+    display: ;
 }
