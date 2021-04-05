@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&display=swap');
 
 body {
     background-color: #263238;
     color: rgba(255, 255, 255, 0.9);
+    font-family: 'Encode Sans', sans-serif;
 }
 
 h3,
-h4 {
+h4, 
+h5 {
     color: #e64a19;
     font-family: "Squada One", sans-serif;
 }
@@ -16,8 +19,11 @@ h4 {
     margin-bottom: 30px;
 }
 
-
 /* --- navbar, form icons ---- */
+.sidenav li a{
+    color: #e64a19;
+}
+
 nav, 
 .form-icon,
 i {
@@ -49,7 +55,6 @@ nav ul a {
 .register-button {
     background-color: #e64a19;
     color: white;
-
 }
 
 /* ---- flash messages ----*/
@@ -59,7 +64,7 @@ nav ul a {
 }
 
 /* collapsable/accordian colour scheme */
-.collapsible, 
+/* .collapsible, 
 .collapsible-header {
     border-color: #e64a19;
     background-color: transparent;
@@ -68,7 +73,7 @@ nav ul a {
 .collapsible-body {
     border-color: #e64a19;
     background-color: #3b4d57;
-}
+} */
 
 /* ---- Movie List Styling ---- */
 .movie-item {
@@ -111,9 +116,25 @@ input[type=range]{
     background-color: red;
 }
 
-
 /* -- Rating and Review desc box -- */
 .rating-box {
     width: 400px;
-    
+}
+
+/* -- Home page background image -- */
+/* This code credited to - https://stackoverflow.com/questions/23254346/how-can-i-change-background-image-opacity-without-changing-on-div-content*/
+#home-background:after {    
+    background: url('/static/images/home-bg-2.jpg') no-repeat center center;
+    content: "";
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.search-label {  /* - use @mediaquery to hide on small devices as it can get overcrowded. - */
+    display: none;
 }
