@@ -23,8 +23,9 @@
         {% for review in reviews %}
                 {% if review.by_user == session.user %}
                 <div class="center-align container review-item blue-grey darken-3 white-text">
-                    <p>Movie: <b>{{ review.movie_name }}</b></p>
-                    <a href="{{ url_for('movie_page', movie_name=review.movie_name ) }}">Go to Movie</a><!-- TRY TO GET THIS TO REDIRECT TO THE MOVIE PAGE -->
+                    <p>Movie: <b>{{ review.movie_name }}</b> </p>
+                        <p></p><a href="{{ url_for('movie_page', movie_name=review.movie_name ) }}" 
+                        class="btn-small green">Go to Movie <i class="far fa-arrow-alt-circle-right white-text"></i></a></p>
                     <p>Rating: {{ review.review_rating }} out of 10</p>
                     <p>"{{ review.review_description }}"</p>
                     <p><em>Review Date: {{ review.review_date }}</em> by <b>{{ review.by_user }}</b></p>
