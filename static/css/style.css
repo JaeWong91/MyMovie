@@ -13,6 +13,7 @@ h4,
 h5 {
     color: #e64a19;
     font-family: "Squada One", sans-serif;
+    margin-top: 15px;
 }
 
 .movie-heading {
@@ -62,18 +63,6 @@ nav ul a {
     color: #b2dfdb;
     line-height: 2;
 }
-
-/* collapsable/accordian colour scheme */
-/* .collapsible, 
-.collapsible-header {
-    border-color: #e64a19;
-    background-color: transparent;
-}
-
-.collapsible-body {
-    border-color: #e64a19;
-    background-color: #3b4d57;
-} */
 
 /* ---- Movie List Styling ---- */
 .movie-item {
@@ -125,7 +114,7 @@ input[type=range]{
     width: 400px;
 }
 
-/* -- Home page background image -- */
+/* -- Home Page -- */
 /* This code credited to - https://stackoverflow.com/questions/23254346/how-can-i-change-background-image-opacity-without-changing-on-div-content*/
 .home-background {
     background-color: black;
@@ -142,6 +131,10 @@ input[type=range]{
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+.card .card-content {
+    padding: 15px;;
 }
 
 /* --- Media Queries --- */

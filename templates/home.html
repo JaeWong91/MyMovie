@@ -27,7 +27,7 @@
                         <p>Go to your profile page to view your existing movie reviews.</p>
                     </div>
                     <div class="card-action center-align">
-                        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                        <a href="{{ url_for('profile', username=session['user']) }}" class="btn-small">Profile</a>
                     </div>
                 </div>
             </div>
@@ -40,8 +40,8 @@
                             you can sign-up and register here.</p>
                     </div>
                     <div class="card-action center-align">
-                        <a href="{{ url_for('login') }}">Log In</a>
-                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}" class="btn-small">Log In</a>
+                        <a href="{{ url_for('register') }}" class="btn-small">Register</a>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                             If you have an account, you can write your own review. </p>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('get_movies') }}" class="center-align text-center">Movie List</a>
+                        <a href="{{ url_for('get_movies') }}" class="btn-small">Movie List</a>
                     </div>
                 </div>
             </div>
