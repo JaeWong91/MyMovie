@@ -144,6 +144,16 @@ input[type=range]{
     z-index: -1;
 }
 
-.search-label {  /* - use @mediaquery to hide on small devices as it can get overcrowded. - */
-    display: ;
+/* --- Media Queries --- */
+
+@media (max-width: 600px) {
+    .movie-item {
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .movie-details {
+        text-align: center;
+    }
 }

@@ -19,6 +19,19 @@
         </div>
 
         <div class="row">
+            {% if session.user %}
+                <div class="col s12 m6 center-align home-menu">
+                <div class="card blue-grey darken-4">
+                    <div class="card-content white-text">
+                        <span class="card-title"><h5>Your Profile</h5></span>
+                        <p>Go to your profile page to view your existing movie reviews.</p>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
             <div class="col s12 m6 center-align home-menu">
                 <div class="card blue-grey darken-4">
                     <div class="card-content white-text">
@@ -32,6 +45,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div class="col s12 m6 center-align home-menu">
                 <div class="card blue-grey darken-4">
                     <div class="card-content white-text">

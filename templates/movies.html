@@ -29,11 +29,11 @@
     {% for movie in movies %}
     <a href="{{ url_for('movie_page', movie_name=movie.movie_name) }}"> <!-- This is for redirecting to the individual movie page -->
     <div class="row movie-item">
-        <div class="col s12 m4 center-align valign-wrapper">
-            <img src="{{ movie.image }}" alt="">
+        <div class="col s12 m4 center-align ">
+            <img src="{{ movie.image }}" alt="Movie Image">
         </div>
         <div class="col s12 m8 white-text">
-            <strong>{{ movie.movie_name }}</strong> <span>&nbsp({{ movie.year }})</span>
+            <h5>{{ movie.movie_name }} <span>&nbsp({{ movie.year }})</span> </h5>
             <!--"&nbsp" forces a space-->
             <p><b>Genre</b>: {{ movie.genre }}</p>
             <p><b>Director(s)</b>: {{ movie.director }}</p>
