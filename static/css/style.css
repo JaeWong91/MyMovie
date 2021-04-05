@@ -87,6 +87,10 @@ nav ul a {
     padding-bottom: 10px;
 }
 
+.movie-item:hover {
+    background-color: #455a64;
+}
+
 /* ---- Review List Styling ---- */
 .review-item {
     display: block;
