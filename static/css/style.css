@@ -6,6 +6,7 @@ body {
     background-color: #161d20;
     color: rgba(255, 255, 255, 0.9);
     font-family: 'Encode Sans', sans-serif;
+    margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
 h3,
@@ -46,6 +47,35 @@ nav ul a {
 
 .sidenav-trigger {
     color: #e64a19;
+}
+
+
+/* ---- Footer ---- 
+code from https://stackoverflow.com/questions/15960290/css-footer-not-displaying-at-the-bottom-of-the-page/15960308 */ 
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    font-size: 35px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    color: #e64a19;
+    margin-top: 20px;
+}
+
+.footer-icon {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.footer-icon:hover {
+    color: white;
 }
 
 /* ---- registration form ----*/
