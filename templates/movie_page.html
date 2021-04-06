@@ -47,35 +47,36 @@
         </div>
     </div>
 
-    <!-- Adding a Review only if logged in -->
+    <!-- Adding a Review only if logged in and if NOT already reviewed -->
     {% if session.user %}
-        <!-- materialize text area-->
-        <div class="row container center-align">
-            <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12">
-                <div class="row">
-                    <!-- rating slider -->
-                    <p class="col s12 center-align rating-box">Rate this Movie</p>
-                    <p class="range-field container">
-                        <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div> 
-                        <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" 
-                            value="5" oninput="nextElementSibling.value = this.value" 
-                                class="rating-slider" required>
-                    </p>
-                    <!-- review description -->
-                    <div class="container review-desc-box">
-                        <div class="input-field col s12">
-                            <textarea id="review_description" name="review_description" minlength="10" 
-                                maxlength="500" class="materialize-textarea white-text" required></textarea>
-                            <label for="review_description">Write your review here.</label>
-                        </div>
-                        <div class="col s12 center-align">
-                            <button class="waves-effect waves-light btn-small center-align" 
-                            type="submit">Submit</button>
+        {% if already_reviewed %}
+            <p class="center-align"> You have already Reviewed this Movie </p>
+        {% else %}
+            <div class="row container center-align">
+                <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12">
+                    <div class="row">
+                        <!-- rating slider -->
+                        <p class="col s12 center-align rating-box">Rate this Movie</p>
+                        <p class="range-field container">
+                        <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div>
+                        <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" value="5"
+                            oninput="nextElementSibling.value = this.value" class="rating-slider" required>
+                        </p>
+                        <!-- review description -->
+                        <div class="container review-desc-box">
+                            <div class="input-field col s12">
+                                <textarea id="review_description" name="review_description" minlength="10" maxlength="500"
+                                    class="materialize-textarea white-text" required></textarea>
+                                <label for="review_description">Write your review here.</label>
+                            </div>
+                            <div class="col s12 center-align">
+                                <button class="waves-effect waves-light btn-small center-align" type="submit">Submit</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        {% endif %}
     {% else %}
         <p class="center-align">You must be logged in to write a review. Log in <a href="{{ url_for('login') }}">here.</a></p>
     {% endif %}
