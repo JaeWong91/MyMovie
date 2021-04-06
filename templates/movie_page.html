@@ -87,8 +87,10 @@
         {% if review.movie_name == get_movie.movie_name %}
             <p>Rating: {{ review.review_rating }} out of 10</p>
             <p>"{{ review.review_description }}" </p>
-            <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em></p>
-
+            <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em>
+            {% if review.edit_date %}
+                <em>(Edited on {{ review.edit_date }})</em></p>
+            {% endif %}
             <!-- use can see edit/delete buttons for their own reviews -->
             {% if review.by_user == session.user or session.user|lower == "admin"|lower %}
                 <div class="row">

@@ -131,14 +131,14 @@ def movie_page(movie_name):
         {"movie_name": movie_name}).sort("review_date", -1))
     already_reviewed = False
 
+    # This is to limit 1 review per user
     for review in reviews:
         if review["by_user"] == session["user"]:
             already_reviewed = True
 
-
-
     return render_template("movie_page.html",
-        get_movie=get_movie, reviews=reviews, already_reviewed=already_reviewed)
+        get_movie=get_movie, reviews=reviews,
+            already_reviewed=already_reviewed)
 
 
 # Add Movie
@@ -233,7 +233,8 @@ def edit_review(review_id):
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
             "by_user": session["user"],
-            "review_date": now.strftime("%d-%m-%Y %H:%M")
+            "review_date": request.form.get("review_date"),
+            "edit_date": now.strftime("%d-%m-%Y %H:%M")
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
         flash("Review successfully edited")
