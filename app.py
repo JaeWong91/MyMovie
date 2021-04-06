@@ -106,13 +106,14 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", 
+        return render_template("profile.html",
             username=username, reviews=reviews, movies=movies)
         # we need to pass the "username" variable here
 
     return redirect(url_for("login"))
 
 
+# Log Out
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -131,10 +132,18 @@ def movie_page(movie_name):
         {"movie_name": movie_name}).sort("review_date", -1))
     already_reviewed = False
 
+    # determine if a user is logged in
+    user = ""
+    try:
+        user = session["user"]
+    except KeyError:
+        user = None
+
     # This is to limit 1 review per user
-    for review in reviews:
-        if review["by_user"] == session["user"]:
-            already_reviewed = True
+    if user:
+        for review in reviews:
+            if review["by_user"] == session["user"]:
+                already_reviewed = True
 
     return render_template("movie_page.html",
         get_movie=get_movie, reviews=reviews,
