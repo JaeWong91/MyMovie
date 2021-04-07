@@ -54,9 +54,33 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 ## Home page
 - There is a welcome message and a brief description of the website.
+
 - There will be two panels showing at all times:
     - The first panel is dependant of the visitor being a registered user. If the visitor is not logged in, the panel will show links to the Log In page, or the Register page. If a user is logged in, the panel will show a Profile button, to redirect the user to the profile page.
-    - The second panel is a link to redirect the visitor or user(no account required) to the Movies page.
+    - The second panel is a link to redirect the all users to the Movies page.
+
+## Movies page (List of Movies)
+
+- The full list of movies can be found here. A search bar can be used to find particular movies. The search queries includes the movie title, movie genre, director and cast members.
+
+- Each movie here will redirect to the individual movie page.
+
+## Movie page (Individual Movie)
+- Visitors can read reviews submitted by registered users.
+
+- Registered users have the ability to rate and write a review. They will also be able to delete or edit their existing review. Each registered user is limited to one review per movie.
+
+- Each review will have a time stamp for when the review was created. A seperate time stamp will be present if a review has been edited.
+
+- The Administrator is able to remove or edit all reviews.
+
+- The Administrator is able to remove the Movie from the database or edit the Movie information.
+
+- If the user wishes to delete a review, a warning popup will appear for confirmation.
+
+- If the Administrator wishes to delete the Movie from the database, a warning popup will appear for confirmation.
+
+
 
 
 Code credits:
