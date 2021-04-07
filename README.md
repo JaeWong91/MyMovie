@@ -1,6 +1,14 @@
-MyMovie
+# MyMovie
 
-This is a movie review website for all movie fans.
+![] *insert website preview here
+
+This is a movie review website for all movie fans. Visitors of the site can search and view reviews and ratings for all kinds of movies, even without a registered account. If a user would like to write a review of their own, a registered account is required. Once registered, the user is able to write reviews and see their written reviews on their profile page. They will also have the ability to edit existing reviews, or remove them.
+
+# User Experience (UX)
+
+## User Stories
+
+
 
 Code source:
 
