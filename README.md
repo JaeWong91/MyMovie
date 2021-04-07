@@ -70,6 +70,8 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 - Registered users have the ability to rate and write a review. They will also be able to delete or edit their existing review. Each registered user is limited to one review per movie.
 
+- Where a registered user is logged in and has already placed a review, a message will show that they have already reviewed that particular movie.
+
 - Each review will have a time stamp for when the review was created. A seperate time stamp will be present if a review has been edited.
 
 - The Administrator is able to remove or edit all reviews.
@@ -79,7 +81,6 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 - If the user wishes to delete a review, a warning popup will appear for confirmation.
 
 - If the Administrator wishes to delete the Movie from the database, a warning popup will appear for confirmation.
-
 
 
 
