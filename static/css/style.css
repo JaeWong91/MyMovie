@@ -78,6 +78,12 @@ html {
     color: white;
 }
 
+/* ---- Home Page --- */
+
+.home-menu {
+    height: 160px;
+}
+
 /* ---- registration form ----*/
 .registration-form {
     color: black;

@@ -83,42 +83,42 @@
 
     <!-- Show Existing Reviews for the particular movie-->    
     {% for review in reviews %}
-    <div class="center-align container review-item blue-grey darken-3 white-text">
-        {% if review.movie_name == get_movie.movie_name %}
-            <p>Rating: {{ review.review_rating }} out of 10</p>
-            <p>"{{ review.review_description }}" </p>
-            <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em>
-            {% if review.edit_date %}
-                <em>(Edited on {{ review.edit_date }})</em></p>
-            {% endif %}
-            <!-- use can see edit/delete buttons for their own reviews -->
-            {% if review.by_user == session.user or session.user|lower == "admin"|lower %}
-                <div class="row">
-                    <a href="{{ url_for('edit_review', review_id=review._id ) }}" 
-                        class="btn-small"><i class="fas fa-edit white-text left"></i>Edit Review</a>
+        <div class="center-align container review-item blue-grey darken-3 white-text">
+            {% if review.movie_name == get_movie.movie_name %}
+                <p>Rating: {{ review.review_rating }} out of 10</p>
+                <p>"{{ review.review_description }}" </p>
+                <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em>
+                {% if review.edit_date %}
+                    <em>(Edited on {{ review.edit_date }})</em></p>
+                {% endif %}
+                <!-- use can see edit/delete buttons for their own reviews -->
+                {% if review.by_user == session.user or session.user|lower == "admin"|lower %}
+                    <div class="row">
+                        <a href="{{ url_for('edit_review', review_id=review._id ) }}" 
+                            class="btn-small"><i class="fas fa-edit white-text left"></i>Edit Review</a>
 
-                    <!-- Modal Trigger for deleting review-->
-                    <button data-target="#confirm-delete-{{ review._id }}" 
-                        class="red waves-effect waves-light btn-small modal-trigger">Delete Review</button>
-                    <!-- Modal Structure -->
-                    <div id="#confirm-delete-{{ review._id }}" class="modal blue-grey lighten-4 red-text center-align">
-                        <div class="modal-content">
-                            <h4><b>WARNING</b></h4>
-                            <h5>Are you sure you wish to delete your review for <b>{{ review.movie_name }}</b>:
-                                <br><br> "{{ review.review_description }}" ?
-                                <br><br>This action is irreversible.
-                            </h5>
-                        </div>
-                        <div class=" center-align">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-small">CANCEL</a>
-                            <a href="{{ url_for('delete_review', review_id=review._id ) }}" 
-                                class="btn-small red">Delete Review</a>
+                        <!-- Modal Trigger for deleting review-->
+                        <button data-target="#confirm-delete-{{ review._id }}" 
+                            class="red waves-effect waves-light btn-small modal-trigger">Delete Review</button>
+                        <!-- Modal Structure -->
+                        <div id="#confirm-delete-{{ review._id }}" class="modal blue-grey lighten-4 red-text center-align">
+                            <div class="modal-content">
+                                <h4><b>WARNING</b></h4>
+                                <h5>Are you sure you wish to delete your review for <b>{{ review.movie_name }}</b>:
+                                    <br><br> "{{ review.review_description }}" ?
+                                    <br><br>This action is irreversible.
+                                </h5>
+                            </div>
+                            <div class=" center-align">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-small">CANCEL</a>
+                                <a href="{{ url_for('delete_review', review_id=review._id ) }}" 
+                                    class="btn-small red">Delete Review</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endif %}
-        {% endif %}
-    </div>
+        </div>
     {% endfor %}
     
 {% endblock %}

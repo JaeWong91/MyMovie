@@ -178,6 +178,7 @@ def add_movie():
     return render_template("add_movie.html")
 
 
+# edit movie
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
 def edit_movie(movie_id):
     if request.method == "POST":
