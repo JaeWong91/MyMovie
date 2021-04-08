@@ -29,7 +29,7 @@ This is a movie review website for all movie fans. Visitors of the site can sear
 
     - I would like to add a movie to the database.
     - I would like to edit an existing movie such as the title, year of release, genre, director, cast and image.
-    - I would like to delete or edit an existing review written by other users, in case the contents are inappropriate. 
+    - I would like to delete or edit an existing review written by all users, in case the contents are inappropriate. 
 
 ## Design
 ### Colour Scheme
@@ -82,11 +82,32 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 - If the Administrator wishes to delete the Movie from the database, a warning popup will appear for confirmation.
 
+## Future Features
+- User password reset function where a user may have forgotten their password.
+
+- A welcome email for when the user first registers.
+
+- An advanced search option for movies such as selection boxes for genres and movie list sorting.
+
+- Embedded movie trailers from video sites such as youtube for each movie.
+
+- A section on the home page to show popular and new movies. This could be housed in a carousel.
+
+# Database
 
 
-Code credits:
 
-#confirm-delete-{{ review._id }} - https://stackoverflow.com/questions/28556370/confirmation-modal-for-flask-not-working-in-a-loop
--This is a code to target specific reviews. This allows modals for each review for the "confirm delete" button.
 
-Timestamps for adding and editing reviews - # this taken from https://www.codegrepper.com/code-examples/python/datetime+today
+# Credits
+
+### Code credits
+- Code institute Flask mini project video tutorials - This has assisted greatly for my project.
+
+- Confirmation Modals - The code for creating warning modals for confirmation of deleting seperate movies or reviews - [Stack Overflow](https://stackoverflow.com/questions/28556370/confirmation-modal-for-flask-not-working-in-a-loop)
+
+- Time stamps to show when a review was added and edited - [codegrepper.com](https://www.codegrepper.com/code-examples/python/datetime+today)
+
+### Content
+- All Movie information were obtained from [IMDB](https://www.imdb.com/?ref_=nv_home), arguably the most popular movie website.
+- The Home page background image was taken from by a user named "Felix Mooneeram" on [unsplash.com](https://unsplash.com/s/photos/movie).
+
