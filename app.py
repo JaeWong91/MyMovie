@@ -124,7 +124,7 @@ def profile(username):
 def logout():
     # remove user from session cookies
     flash("You have been logged out")
-    session.clear() # WRONG 
+    session.clear()
     return redirect(url_for("login"))
 
 
@@ -181,8 +181,7 @@ def add_movie():
             }
             mongo.db.movies.insert_one(movie)
             flash("Movie Successfully Added")
-            return redirect(url_for(
-                "movie_page", movie_name=request.form.get("movie_name")))
+            return redirect(url_for("get_movies"))
         return render_template("add_movie.html")
     return render_template("add_movie.html")
 
@@ -207,7 +206,7 @@ def edit_movie(movie_id):
         which contains all the form elements
         '''
         flash("Movie Successfully Edited")
-
+        
     # the "id" is whats on mongodb and
     # in a bson data type(string of letters and nums)
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
