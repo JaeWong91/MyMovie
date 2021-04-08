@@ -97,7 +97,9 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 # Database
 
-
+### MongoDB
+MongoDB is the database used to store my collection of data. There are three collections of data - Movies, Reviews and Users. 
+Each of the collections have a simple key-value format. 
 
 
 # Credits
