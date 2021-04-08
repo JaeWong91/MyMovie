@@ -53,8 +53,9 @@
             <p class="center-align"> You have already Reviewed this Movie </p>
         {% else %}
             <div class="row container center-align">
-                <form method="POST" action="{{ url_for('add_review', movie_name=get_movie.movie_name) }}" class="col s12">
+                <form method="POST" action="{{ url_for('add_review', movie_id=get_movie._id) }}" class="col s12">
                     <div class="row">
+                        <input id="movie_name" name="movie_name" type="text" value="{{ get_movie.movie_name }}" class="validate hide" required>
                         <!-- rating slider -->
                         <p class="col s12 center-align rating-box">Rate this Movie</p>
                         <p class="range-field container">

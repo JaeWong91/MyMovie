@@ -27,6 +27,7 @@ def home():
     return render_template("home.html")
 
 
+# movie list
 @app.route("/")
 @app.route("/get_movies")
 def get_movies():
@@ -35,6 +36,7 @@ def get_movies():
     return render_template("movies.html", movies=movies)
 
 
+# search query
 @app.route("/get_movies/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -42,6 +44,7 @@ def search():
     return render_template("movies.html", movies=movies)
 
 
+# register
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -68,6 +71,7 @@ def register():
     return render_template("register.html")
 
 
+# login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -97,6 +101,7 @@ def login():
     return render_template("login.html")
 
 
+# profile
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from the db
@@ -119,18 +124,18 @@ def profile(username):
 def logout():
     # remove user from session cookies
     flash("You have been logged out")
-    session.pop("user")
+    session.clear() # WRONG 
     return redirect(url_for("login"))
 
 
 # Movie Page
-@app.route("/movie_page/<movie_name>")
-def movie_page(movie_name):
+@app.route("/movie_page/<movie_id>")
+def movie_page(movie_id):
     # page redirect to the particular movie on click from movie list page
     # obtain specific movie and list of all reviews for that movie
-    get_movie = mongo.db.movies.find_one({"movie_name": movie_name})
+    get_movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
     reviews = list(mongo.db.reviews.find(
-        {"movie_name": movie_name}).sort("review_date", -1))
+        {"movie_id": movie_id}).sort("review_date", -1))
     already_reviewed = False
 
     # determine if a user is logged in
@@ -155,28 +160,30 @@ def movie_page(movie_name):
 # Add Movie
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
-    if request.method == "POST":
-        # Check if movie exists
-        # add this myself, unable to make it work without case sensitivity
-        existing_movie = mongo.db.movies.find_one(
-            {"movie_name": request.form.get("movie_name")})
+    if session['user'] == "admin":
+        if request.method == "POST":
+            # Check if movie exists
+            # add this myself, unable to make it work without case sensitivity
+            existing_movie = mongo.db.movies.find_one(
+                {"movie_name": request.form.get("movie_name")})
 
-        if existing_movie:
-            flash("Movie already exists")
-            return redirect(url_for("add_movie"))
+            if existing_movie:
+                flash("Movie already exists")
+                return redirect(url_for("add_movie"))
 
-        movie = {
-            "movie_name": request.form.get("movie_name"),
-            "year": request.form.get("year"),
-            "genre": request.form.get("genre"),
-            "director": request.form.get("director"),
-            "cast": request.form.get("cast"),
-            "image": request.form.get("image")
-        }
-        mongo.db.movies.insert_one(movie)
-        flash("Movie Successfully Added")
-        return redirect(url_for(
-            "movie_page", movie_name=request.form.get("movie_name")))
+            movie = {
+                "movie_name": request.form.get("movie_name"),
+                "year": request.form.get("year"),
+                "genre": request.form.get("genre"),
+                "director": request.form.get("director"),
+                "cast": request.form.get("cast"),
+                "image": request.form.get("image")
+            }
+            mongo.db.movies.insert_one(movie)
+            flash("Movie Successfully Added")
+            return redirect(url_for(
+                "movie_page", movie_name=request.form.get("movie_name")))
+        return render_template("add_movie.html")
     return render_template("add_movie.html")
 
 
@@ -217,12 +224,13 @@ def delete_movie(movie_id):
 
 
 # Add Review
-@app.route("/movie_page/<movie_name>", methods=["POST"])
-def add_review(movie_name):
+@app.route("/movie_page/<movie_id>", methods=["POST"])
+def add_review(movie_id):
     if request.method == "POST":
         now = datetime.now()
         review = {
-            "movie_name": movie_name,  # should this be movies._id instead?
+            "movie_id": movie_id,
+            "movie_name": request.form.get("movie_name"),
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
             "by_user": session["user"],
@@ -231,17 +239,18 @@ def add_review(movie_name):
         mongo.db.reviews.insert_one(review)
 
     flash("Your review was added")
-    return redirect(url_for("movie_page", movie_name=movie_name))
+    return redirect(url_for("movie_page", movie_id=movie_id))
 
 
-# Edit Review
+# Edit Review -Unable to get it to redirect back to movie_page
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
+    movie_id = request.form.get("movie_id")
     if request.method == "POST":
         now = datetime.now()
         submit = {
+            "movie_id": request.form.get("movie_id"),
             "movie_name": request.form.get("movie_name"),
-            # should this be movies._id instead?
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
             "by_user": session["user"],
@@ -249,9 +258,8 @@ def edit_review(review_id):
             "edit_date": now.strftime("%d-%m-%Y %H:%M")
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
-        flash("Review successfully edited")
-        return redirect(url_for("get_movies"))
-        # tried return redirect(url_for("movie_page", movie_name=movie_name ))
+        return redirect(url_for("movie_page", movie_id=movie_id))
+        # tried return redirect(url_for("movie_page", movie_name=movie_name))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template("edit_review.html", review=review)

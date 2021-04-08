@@ -22,6 +22,7 @@
                 <!-- review description -->
                 <div class="container review-desc-box">
                     <div class="input-field col s12">
+                        <input type="text" value="{{ review.movie_id }}" id="movie_id" name="movie_id" class="hide">
                         <input type="text" value="{{ review.movie_name }}" id="movie_name" name="movie_name" class="hide">
                         <textarea id="review_description" name="review_description" minlength="10" 
                             maxlength="500" class="materialize-textarea white-text" 
@@ -34,7 +35,7 @@
                     <!-- review buttons -->
                     <div class="col s12 center-align"> 
                         <!-- Cancel button -->
-                        <a href="{{ url_for('movie_page', movie_name=review.movie_name) }}" class="btn-small">
+                        <a href="{{ url_for('movie_page', movie_id=review.movie_id) }}" class="btn-small">
                             Cancel <i class="fas fa-times-circle right white-text "></i></a>
                         <!-- Submit Edit button -->
                         <button class="waves-effect waves-light btn-small center-align green" 
