@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -106,8 +106,9 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html",
-            username=username, reviews=reviews, movies=movies)
+        return render_template(
+            "profile.html", username=username, 
+            reviews=reviews, movies=movies)
         # we need to pass the "username" variable here
 
     return redirect(url_for("login"))
@@ -145,9 +146,10 @@ def movie_page(movie_name):
             if review["by_user"] == session["user"]:
                 already_reviewed = True
 
-    return render_template("movie_page.html",
-        get_movie=get_movie, reviews=reviews,
-            already_reviewed=already_reviewed)
+    return render_template(
+        "movie_page.html",
+        get_movie=get_movie,
+        reviews=reviews, already_reviewed=already_reviewed)
 
 
 # Add Movie
@@ -173,8 +175,8 @@ def add_movie():
         }
         mongo.db.movies.insert_one(movie)
         flash("Movie Successfully Added")
-        return redirect(url_for("movie_page", 
-            movie_name=request.form.get("movie_name")))
+        return redirect(url_for(
+            "movie_page", movie_name=request.form.get("movie_name")))
     return render_template("add_movie.html")
 
 
@@ -261,7 +263,8 @@ def delete_review(review_id):
     mongo.db.reviews.remove({"_id": ObjectId(review_id)})
     flash("Review Successfuly Removed")
     return redirect(request.referrer)
-    # This line taken from https://stackoverflow.com/questions/41270855/flask-redirect-to-same-page-after-form-submission
+    # This line taken from https://stackoverflow.com/questions
+    # /41270855/flask-redirect-to-same-page-after-form-submission
 
 
 # Delete Review from Profile

@@ -22,13 +22,13 @@
                 <!-- review description -->
                 <div class="container review-desc-box">
                     <div class="input-field col s12">
-                        <input type="text" value="{{ review.movie_name }}" id="movie_name" name="movie_name" class="hide"></p>
+                        <input type="text" value="{{ review.movie_name }}" id="movie_name" name="movie_name" class="hide">
                         <textarea id="review_description" name="review_description" minlength="10" 
                             maxlength="500" class="materialize-textarea white-text" 
                             value="{{ review.review_description }}" required>{{ review.review_description }}</textarea>
                         <!-- <label for="review_description">Edit your review here.</label> -->
                         <p id="{{ review.by_user }}"></p>
-                        <input type="text" value="{{ review.review_date }}" id="review_date" name="review_date" class="hide"></p>
+                        <input type="text" value="{{ review.review_date }}" id="review_date" name="review_date" class="hide">
                     </div>
                     
                     <!-- review buttons -->

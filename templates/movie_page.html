@@ -82,6 +82,7 @@
     {% endif %}
 
     <!-- Show Existing Reviews for the particular movie-->    
+    <h5 class="center-align">Reviews</h5>
     {% for review in reviews %}
         <div class="center-align container review-item blue-grey darken-3 white-text">
             {% if review.movie_name == get_movie.movie_name %}
