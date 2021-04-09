@@ -45,7 +45,7 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 
 ### Wireframes and Mockups
-- The design for the wireframes were created using Balsamiq. These can be viewed [here]
+- The design for the wireframes were created using Balsamiq. These can be viewed [here](./static/readme-images/wireframes.pdf)
 
 # Features
 
