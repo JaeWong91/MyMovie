@@ -259,7 +259,7 @@ def edit_review(review_id):
     if request.method == "POST":
         now = datetime.now()
         submit = {
-            "movie_id": request.form.get("movie_id"),
+            "movie_id": ObjectId(movie_id),
             "movie_name": request.form.get("movie_name"),
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
