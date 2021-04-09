@@ -63,7 +63,6 @@ html {
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 60px;
     color: #e64a19;
     margin-top: 20px;
 }
@@ -140,10 +139,15 @@ html {
 
 .disabled:hover {
     background-color: #546e7a;
+    color: white;
 }
 
 a {
     color: gray;
+}
+
+a:hover {
+    color: white;
 }
 
 /* ---- Review List Styling ---- */
