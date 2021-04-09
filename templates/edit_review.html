@@ -2,49 +2,48 @@
 {% block content %}
 
     {% if session.user %}
-    <div>
-        <h4 class="center-align movie-heading">
-            {{ review.movie_name }}
-        </h4>
-    </div>
-    <!-- materialize text area-->
-    <div class="row container">
-        <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}" class="col s12"> <!-- the action current leads to "/movie_page/" when checked on dev tool-->
-            <div class="row">
-                <!-- rating slider -->
-                <p class="col s12 center-align rating-box">Rate this Movie</p>
-                <p class=" container center-align">
-                    <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" 
-                        value="{{ review.review_rating }}" oninput="nextElementSibling.value = this.value" 
-                            class="rating-slider center-align" required>
-                    <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div> <!--Work on getting this to change with the slider -->
-                </p>
-                <!-- review description -->
-                <div class="container review-desc-box">
-                    <div class="input-field col s12">
-                        <input type="text" value="{{ review.movie_id }}" id="movie_id" name="movie_id" class="hide">
-                        <input type="text" value="{{ review.movie_name }}" id="movie_name" name="movie_name" class="hide">
-                        <textarea id="review_description" name="review_description" minlength="10" 
-                            maxlength="500" class="materialize-textarea white-text" 
-                            value="{{ review.review_description }}" required>{{ review.review_description }}</textarea>
-                        <!-- <label for="review_description">Edit your review here.</label> -->
-                        <p id="{{ review.by_user }}"></p>
-                        <input type="text" value="{{ review.review_date }}" id="review_date" name="review_date" class="hide">
-                    </div>
-                    
-                    <!-- review buttons -->
-                    <div class="col s12 center-align"> 
-                        <!-- Cancel button -->
-                        <a href="{{ url_for('movie_page', movie_id=review.movie_id) }}" class="btn-small">
-                            Cancel <i class="fas fa-times-circle right white-text "></i></a>
-                        <!-- Submit Edit button -->
-                        <button class="waves-effect waves-light btn-small center-align green" 
-                        type="submit">Submit</button>
+        <div>
+            <h4 class="center-align movie-heading">
+                {{ review.movie_name }}
+            </h4>
+        </div>
+        <!-- materialize text area-->
+        <div class="row container">
+            <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}" class="col s12">
+                <div class="row">
+                    <!-- rating slider -->
+                    <p class="col s12 center-align rating-box">Rate this Movie</p>
+                    <p class=" container center-align">
+                        <input type="range" id="review_rating" name="review_rating" min="1" max="10" step="1" 
+                            value="{{ review.review_rating }}" oninput="nextElementSibling.value = this.value" 
+                                class="rating-slider center-align" required>
+                        <div type="text" class="col s12 center-align" id="review_output" name="review_output">5</div>
+                    </p>
+                    <!-- review description -->
+                    <div class="container review-desc-box">
+                        <div class="input-field col s12">
+                            <input type="text" value="{{ review.movie_id }}" id="movie_id" name="movie_id" class="hide">
+                            <input type="text" value="{{ review.movie_name }}" id="movie_name" name="movie_name" class="hide">
+                            <textarea id="review_description" name="review_description" minlength="10" 
+                                maxlength="500" class="materialize-textarea white-text" 
+                                value="{{ review.review_description }}" required>{{ review.review_description }}</textarea>
+                            <p id="{{ review.by_user }}"></p>
+                            <input type="text" value="{{ review.review_date }}" id="review_date" name="review_date" class="hide">
+                        </div>
+                        
+                        <!-- review buttons -->
+                        <div class="col s12 center-align"> 
+                            <!-- Cancel button -->
+                            <a href="{{ url_for('movie_page', movie_id=review.movie_id) }}" class="btn-small">
+                                Cancel <i class="fas fa-times-circle right white-text "></i></a>
+                            <!-- Submit Edit button -->
+                            <button class="waves-effect waves-light btn-small center-align green" 
+                            type="submit">Submit</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     {% endif %}
 
 {% endblock %}

@@ -4,14 +4,14 @@
     <h3 class="center-align">Register</h3>
 
     <div class="row">
-        <form class="col s12 m6 offset-m3" method="POST" action="{{ url_for('register') }}"> <!--offset-m2 means pushed 2 spaces to right-->
+        <form class="col s12 m6 offset-m3" method="POST" action="{{ url_for('register') }}">
             <div class="card-panel blue-grey darken-3">
                 <!-- username -->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-user-plus prefix form-icon"></i>
                         <input id="username" name="username" type="text" minlength="4" 
-                            maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$" class="validate white-text" required> <!--pattern="^[a-zA-Z0-9]{4,15}$" This is the pattern for a valid username, the 4,15 means character length between 4 and 15-->
+                            maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$" class="validate white-text" required>
                         <label for="username">Username</label>
                     </div>
                 </div>

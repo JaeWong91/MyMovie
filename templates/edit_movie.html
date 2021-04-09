@@ -6,8 +6,6 @@
     {% if session.user|lower == "admin"|lower %}
         <div class="container">
             <div class="row card-panel blue-grey darken-3">
-                <!--The 'movie_id' will be equal to our current 'movie' being modified, and using dot-notation,
-                we want to target its specific '_id' key from the document. e.g "movie_id=movie._id"-->
                 <form class="col s12" method="POST" action="{{ url_for('edit_movie', movie_id=movie._id) }}">
                     <!-- movie title -->
                     <div class="row">
@@ -22,11 +20,10 @@
                     </div>
                     <!-- year of movie release -->
                     <div class="row">
-                        <div class="input-field col s12">   <!-- try to find a way to set max to "this year" -->
+                        <div class="input-field col s12">
                             <input id="year" name="year" type="number" min="1850" 
                                 max="2021" value="{{ movie.year }}" class="validate white-text" required>
                             <label for="year">Year of Release</label>
-                            <!-- <span class="helper-text blue-text text-lighten-2">Enter the year the movie had released</span> -->
                         </div>
                     </div>
                     <!-- genre -->

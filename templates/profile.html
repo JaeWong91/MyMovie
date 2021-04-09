@@ -26,7 +26,7 @@
                     class="btn-small green">Go to Movie<i class="far fa-arrow-alt-circle-right white-text"></i></a></p>
                 <p>Rating: {{ review.review_rating }} out of 10</p>
                 <p>"{{ review.review_description }}"</p>
-                <p><em>Review date: {{ review.review_date }} by <b>{{ review.by_user }}</b></em> <!--REMOVE "REVIEWED BY", THIS IS HERE ONLY FOR TESTING PURPOSES-->
+                <p><em>Review date: {{ review.review_date }}</em>
                 <!-- if review was edited, the edit date will appear -->
                 {% if review.edit_date %}
                     <em>(Edited on {{ review.edit_date }})</em></p>
@@ -35,7 +35,6 @@
                     <a href="{{ url_for('edit_review', review_id=review._id ) }}" class="btn-small">Edit Review</a>
                     <!-- Modal Trigger for deleting review-->
                     <button data-target="#confirm-delete-{{ review._id }}" class="red waves-effect waves-light btn-small modal-trigger">Delete Review</button> 
-                    <!-- Modal Structure -->
                     <!-- Confirm Delete Warning Modal -->
                     <div id="#confirm-delete-{{ review._id }}" class="modal blue-grey lighten-4 red-text center-align"> 
                         <div class="modal-content">
