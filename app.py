@@ -217,7 +217,7 @@ def edit_movie(movie_id):
         which contains all the form elements
         '''
         flash("Movie Successfully Edited")
-
+        return redirect(url_for("movie_page", movie_id=movie_id))
     # the "id" is whats on mongodb and
     # in a bson data type(string of letters and nums)
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
