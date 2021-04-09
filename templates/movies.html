@@ -45,7 +45,8 @@
     <!--List of movies-->
     {% if movies %}
         {% for movie in movies %}
-            <a href="{{ url_for('movie_page', movie_id=movie._id) }}"> <!-- This is for redirecting to the individual movie page -->
+            <!-- on click, redirect to the individual movie page -->
+            <a href="{{ url_for('movie_page', movie_id=movie._id) }}"> 
             <div class="row movie-item">
                 <div class="col s12 m4 center-align ">
                     <img src="{{ movie.image }}" alt="Movie Image">
