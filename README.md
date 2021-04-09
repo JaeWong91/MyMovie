@@ -1,4 +1,4 @@
-# MyMovie
+# [MyMovie](http://my-movie-project-jason.herokuapp.com/home)
 
 ![](/static/readme-images/readme-header.PNG)
 
@@ -45,7 +45,7 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 
 ### Wireframes and Mockups
-- The design for the wireframes were created using Balsamiq. These can be viewed [here](./static/readme-images/wireframes.pdf)
+- The design for the wireframes were created using Balsamiq. These can be viewed [here](./static/readme-images/wireframes.pdf).
 
 # Features
 
@@ -91,6 +91,8 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 - An advanced search option for movies such as selection boxes for genres and movie list sorting.
 
+- Display an overall rating for a movie based on the total reviews.
+
 - Embedded movie trailers from video sites such as youtube for each movie.
 
 - A section on the home page to show popular and new movies. This could be housed in a carousel.
@@ -100,6 +102,34 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 ### MongoDB
 MongoDB is the database used to store my collection of data. There are three collections of data - Movies, Reviews and Users. 
 Each of the collections have a simple key-value format. 
+
+- Movies 
+    - This contains the movie's name, year of release, genre, director, cast and image url. All are text inputs.
+    - Movies can only be added or edited by the admin.
+    - The movie ID is the reference point for the Reviews collection.
+    - The admin cannot add duplicate movies. This is based on the movie_name such that the application will advise the admin that the movie already exists in the database.
+    - The image url is taken from IMDB poster images.
+
+- Reviews
+    - When a review is posted, the movie ID and movie name is set based on the movie being reviewed. 
+    - The review description is a text input by the user.
+    - The username refers to the creater or writer of the review.
+    - Date created is time stamped automatically.
+    - If a user edits a review, this is also automaticlly added.
+    - Only one review can be written per movie for each user.
+
+- Username
+    - This contains the user's username and password.
+    - Upon registration, the application will advise if a username is already taken to ensure no duplicate usernames are created.
+
+
+### Database Relationship
+
+![](./static/readme-images/data-collections.png)
+
+### MongoDB Setup 
+The following steps were used to set up the database for the project.
+
 
 
 # Credits
