@@ -62,14 +62,13 @@ def register():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
-        if existing_user:  # this is "truly", ie if "existing_user == true"
+        if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
 
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
-            # if you want the user to re-confirm password, add a line here
         }
         mongo.db.users.insert_one(register)
 
@@ -102,12 +101,10 @@ def login():
                 # invalid password match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
-
     return render_template("login.html")
 
 
@@ -124,8 +121,6 @@ def profile(username):
         return render_template(
             "profile.html", username=username,
             reviews=reviews, movies=movies)
-        # we need to pass the "username" variable here
-
     return redirect(url_for("login"))
 
 
@@ -210,19 +205,12 @@ def edit_movie(movie_id):
             "image": request.form.get("image")
         }
         mongo.db.movies.update({"_id": ObjectId(movie_id)}, submit)
-        '''
-        update method takes 2 parameters, both of which are dictionaries.
-        This line here searches for the movie in the database by the movie_id,
-        once found it will update the movie with the "submit" dictionary
-        which contains all the form elements
-        '''
+
         flash("Movie Successfully Edited")
         return redirect(url_for("movie_page", movie_id=movie_id))
-    # the "id" is whats on mongodb and
-    # in a bson data type(string of letters and nums)
+
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
     return render_template("edit_movie.html", movie=movie)
-    # Not sure how to redirect back to "movie_page.html" for specific movie
 
 
 # Delete Movie
@@ -252,7 +240,7 @@ def add_review(movie_id):
     return redirect(url_for("movie_page", movie_id=movie_id))
 
 
-# Edit Review -Unable to get it to redirect back to movie_page
+# Edit Review
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     movie_id = request.form.get("movie_id")
@@ -269,7 +257,6 @@ def edit_review(review_id):
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
         return redirect(url_for("movie_page", movie_id=movie_id))
-        # tried return redirect(url_for("movie_page", movie_name=movie_name))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template("edit_review.html", review=review)
