@@ -24,40 +24,44 @@
         </form>
     </div>
 
-<!--materialize pagination -->
-    <ul class="pagination">
-        <li class="disabled"><a href="#!"><i class="material-icons"></i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons"></i></a></li>
-    </ul>
-
-
-
-
-    <!--List of movies-->
-    {% if movies|length > 0 %}
-    {% for movie in movies %}
-    <a href="{{ url_for('movie_page', movie_id=movie._id) }}"> <!-- This is for redirecting to the individual movie page -->
-    <div class="row movie-item">
-        <div class="col s12 m4 center-align ">
-            <img src="{{ movie.image }}" alt="Movie Image">
-        </div>
-        <div class="col s12 m8 white-text">
-            <h5>{{ movie.movie_name }} <span>&nbsp({{ movie.year }})</span> </h5>
-            <!--"&nbsp" forces a space-->
-            <p><b>Genre</b>: {{ movie.genre }}</p>
-            <p><b>Director(s)</b>: {{ movie.director }}</p>
-            <p><b>Cast</b>: {{ movie.cast }}</p>
-        </div>
+    <!-- Pagination bar -->
+    <div class="pagination-bar center-align">
+        <ul class="row center-align">
+            {% for pagenum in pages %}
+                {% if pagenum == page %}
+                    <li class="col active active-page blue-grey darken-3 ">
+                        <span class="page-link">{{ pagenum }}
+                            <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                {% else %}
+                    <li class="col disabled "><a class="page-link gray-text"
+                                                href="{{ url_for('get_movies', page=pagenum) }}">{{ pagenum }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </div>
-    </a>
-    {% endfor %}
+    
+    <!--List of movies-->
+    {% if movies %}
+        {% for movie in movies %}
+            <a href="{{ url_for('movie_page', movie_id=movie._id) }}"> <!-- This is for redirecting to the individual movie page -->
+            <div class="row movie-item">
+                <div class="col s12 m4 center-align ">
+                    <img src="{{ movie.image }}" alt="Movie Image">
+                </div>
+                <div class="col s12 m8 white-text">
+                    <h5>{{ movie.movie_name }} <span>&nbsp({{ movie.year }})</span> </h5>
+                    <!--"&nbsp" forces a space-->
+                    <p><b>Genre</b>: {{ movie.genre }}</p>
+                    <p><b>Director(s)</b>: {{ movie.director }}</p>
+                    <p><b>Cast</b>: {{ movie.cast }}</p>
+                </div>
+            </div>
+            </a>
+        {% endfor %}
     {% else %}
-        <h4 class="center-align blue-text">No Movies Found</h4>
+        <h4 class="center-align">No Movies Found</h4>
     {% endif %}
 
 {% endblock %}

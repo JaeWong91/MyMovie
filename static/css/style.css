@@ -115,6 +115,37 @@ html {
     background-color: #455a64;
 }
 
+/* --- Pagination Icons --- */
+.pagination-bar {
+    background-color: transparent;
+    font-size: 20px;
+    height: 30px;
+    margin: 30px;
+}
+
+.active-page {
+    height: auto;
+    border-radius: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.disabled {
+    color: gray;
+    padding: 6px;
+    border-radius: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.disabled:hover {
+    background-color: #546e7a;
+}
+
+a {
+    color: gray;
+}
+
 /* ---- Review List Styling ---- */
 .review-item {
     display: block;

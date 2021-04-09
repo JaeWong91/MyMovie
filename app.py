@@ -28,29 +28,31 @@ def home():
     return render_template("home.html")
 
 
-# movie list
-@app.route("/")
-@app.route("/get_movies")
-def get_movies():
-    # This will sort the movie list alphabetically in list page
-    movies = list(mongo.db.movies.find().sort("movie_name", 1))
-    return render_template("movies.html", movies=movies)
+# # movie list
+# @app.route("/")
+# @app.route("/get_movies")
+# def get_movies():
+#     # This will sort the movie list alphabetically in list page
+#     movies = list(mongo.db.movies.find().sort("movie_name", 1))
+#     return render_template("movies.html", movies=movies)
 
 
 # pagination - movie list
-# @app.route("/")
-# @app.route('/get_movies')
-# def get_movies():
-#     """Logic for movie list and pagination"""
-#     # number of movies per page
-#     per_page = 10
-#     page = int(request.args.get('page', 1))
-#     # count total number of movies
-#     total = mongo.db.movies.count_documents({})
-#     # logic for what movies to return
-#     movies = mongo.db.movies.find().skip((page - 1)*per_page).limit(per_page)
-#     pages = range(1, int(math.ceil(total / per_page)) + 1)
-#     return render_template('movies.html', get_movies=movies, page=page, pages=pages, total=total)
+@app.route("/")
+@app.route('/get_movies')
+def get_movies():
+    """Logic for movie list and pagination"""
+    # number of movies per page
+    per_page = 6
+    page = int(request.args.get('page', 1))
+    # count total number of movies
+    total = mongo.db.movies.count_documents({})
+    # logic for what movies to return
+    movies = mongo.db.movies.find().sort(
+        "movie_name", 1).skip((page - 1)*per_page).limit(per_page)
+    pages = range(1, int(math.ceil(total / per_page)) + 1)
+    return render_template(
+        'movies.html', movies=movies, page=page, pages=pages, total=total)
 
 
 # search query
@@ -129,7 +131,7 @@ def profile(username):
 
     if session["user"]:
         return render_template(
-            "profile.html", username=username, 
+            "profile.html", username=username,
             reviews=reviews, movies=movies)
         # we need to pass the "username" variable here
 
@@ -181,7 +183,6 @@ def add_movie():
         if session['user'] == "admin":
             if request.method == "POST":
                 # Check if movie exists
-                # add this myself, unable to make it work without case sensitivity
                 existing_movie = mongo.db.movies.find_one(
                     {"movie_name": request.form.get("movie_name")})
 
