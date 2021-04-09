@@ -145,7 +145,7 @@ def movie_page(movie_id):
     # obtain specific movie and list of all reviews for that movie
     get_movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
     reviews = list(mongo.db.reviews.find(
-        {"movie_id": movie_id}).sort("review_date", -1))
+        {"movie_id": ObjectId(movie_id)}).sort("review_date", -1))
     already_reviewed = False
 
     # determine if a user is logged in
@@ -239,7 +239,7 @@ def add_review(movie_id):
     if request.method == "POST":
         now = datetime.now()
         review = {
-            "movie_id": movie_id,
+            "movie_id": ObjectId(movie_id),
             "movie_name": request.form.get("movie_name"),
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
