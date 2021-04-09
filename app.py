@@ -1,4 +1,5 @@
 import os
+import math
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -34,6 +35,22 @@ def get_movies():
     # This will sort the movie list alphabetically in list page
     movies = list(mongo.db.movies.find().sort("movie_name", 1))
     return render_template("movies.html", movies=movies)
+
+
+# pagination - movie list
+# @app.route("/")
+# @app.route('/get_movies')
+# def get_movies():
+#     """Logic for movie list and pagination"""
+#     # number of movies per page
+#     per_page = 10
+#     page = int(request.args.get('page', 1))
+#     # count total number of movies
+#     total = mongo.db.movies.count_documents({})
+#     # logic for what movies to return
+#     movies = mongo.db.movies.find().skip((page - 1)*per_page).limit(per_page)
+#     pages = range(1, int(math.ceil(total / per_page)) + 1)
+#     return render_template('movies.html', get_movies=movies, page=page, pages=pages, total=total)
 
 
 # search query
@@ -160,30 +177,32 @@ def movie_page(movie_id):
 # Add Movie
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
-    if session['user'] == "admin":
-        if request.method == "POST":
-            # Check if movie exists
-            # add this myself, unable to make it work without case sensitivity
-            existing_movie = mongo.db.movies.find_one(
-                {"movie_name": request.form.get("movie_name")})
+    if session:
+        if session['user'] == "admin":
+            if request.method == "POST":
+                # Check if movie exists
+                # add this myself, unable to make it work without case sensitivity
+                existing_movie = mongo.db.movies.find_one(
+                    {"movie_name": request.form.get("movie_name")})
 
-            if existing_movie:
-                flash("Movie already exists")
-                return redirect(url_for("add_movie"))
+                if existing_movie:
+                    flash("Movie already exists")
+                    return redirect(url_for("add_movie"))
 
-            movie = {
-                "movie_name": request.form.get("movie_name"),
-                "year": request.form.get("year"),
-                "genre": request.form.get("genre"),
-                "director": request.form.get("director"),
-                "cast": request.form.get("cast"),
-                "image": request.form.get("image")
-            }
-            mongo.db.movies.insert_one(movie)
-            flash("Movie Successfully Added")
-            return redirect(url_for("get_movies"))
-        return render_template("add_movie.html")
-    return render_template("add_movie.html")
+                movie = {
+                    "movie_name": request.form.get("movie_name"),
+                    "year": request.form.get("year"),
+                    "genre": request.form.get("genre"),
+                    "director": request.form.get("director"),
+                    "cast": request.form.get("cast"),
+                    "image": request.form.get("image")
+                }
+                mongo.db.movies.insert_one(movie)
+                flash("Movie Successfully Added")
+                return redirect(url_for("get_movies"))
+            return render_template("add_movie.html")
+        return render_template("403.html")
+    return render_template("403.html")
 
 
 # edit movie
@@ -206,7 +225,7 @@ def edit_movie(movie_id):
         which contains all the form elements
         '''
         flash("Movie Successfully Edited")
-        
+
     # the "id" is whats on mongodb and
     # in a bson data type(string of letters and nums)
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
@@ -287,6 +306,13 @@ def delete_review_profile(review_id):
 def page_not_found(e):
     # note that we set the 404 status explicitly
     return render_template('404.html'), 404
+
+
+# custom 403 page - forbidden page
+@app.errorhandler(403)
+def page_no_access(e):
+    # note that we set the 403 status explicitly
+    return render_template('403.html'), 403
 
 
 if __name__ == "__main__":
