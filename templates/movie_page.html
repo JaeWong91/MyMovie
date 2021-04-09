@@ -90,7 +90,7 @@
         <h5 class="center-align">Reviews</h5>
         {% for review in reviews %}
             <div class="center-align container review-item blue-grey darken-3 white-text">
-                {% if review.movie_name == get_movie.movie_name %} <!-- TRY TO GET THIS TO COMPARE THE ID'S AND NOT THE MOVIE_NAME!!!-->
+                {% if review.movie_id == get_movie._id %} <!-- TRY TO GET THIS TO COMPARE THE ID'S AND NOT THE MOVIE_NAME!!!-->
                     <p>Rating: {{ review.review_rating }} out of 10</p>
                     <p>"{{ review.review_description }}" </p>
                     <p><em>Reviewed by: <b>{{ review.by_user }}</b> on {{ review.review_date }}</em>
@@ -98,7 +98,7 @@
                         <em>(Edited on {{ review.edit_date }})</em></p>
                     {% endif %}
                     <!-- user can see edit/delete buttons for their own reviews -->
-                    {% if review.by_user == session.user or session.user|lower == "admin"|lower %}
+                    {% if review.by_user == session.user or session.user == "admin" %}
                         <div class="row">
                             <a href="{{ url_for('edit_review', review_id=review._id ) }}" 
                                 class="btn-small"><i class="fas fa-edit white-text left"></i>Edit Review</a>
