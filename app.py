@@ -282,16 +282,23 @@ def delete_review_profile(review_id):
 
 # custom 404 page
 @app.errorhandler(404)
-def page_not_found(e):
+def error_404(e):
     # note that we set the 404 status explicitly
     return render_template('404.html'), 404
 
 
 # custom 403 page - forbidden page
 @app.errorhandler(403)
-def page_no_access(e):
+def error_403(e):
     # note that we set the 403 status explicitly
     return render_template('403.html'), 403
+
+
+# custom 500 page - internal server error
+@app.errorhandler(500)
+def error_500(e):
+    # note that we set the 500 status explicitly
+    return render_template('500.html'), 500
 
 
 if __name__ == "__main__":
