@@ -251,7 +251,7 @@ def edit_review(review_id):
             "movie_name": request.form.get("movie_name"),
             "review_rating": request.form.get("review_rating"),
             "review_description": request.form.get("review_description"),
-            "by_user": session["user"],
+            "by_user": request.form.get("by_user"),
             "review_date": request.form.get("review_date"),
             "edit_date": now.strftime("%d-%m-%Y %H:%M")
         }
