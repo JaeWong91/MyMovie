@@ -322,7 +322,7 @@ Below are the steps to do this:
 8. Select the branches to merge with.
 9. Select the "Create pull request" button.
 
-## cloning the Project
+## Cloning the Project
 There are a few ways to clone a project. In this section, I will describe the method using the URL and Git Bash.
 
 1. Go to my repository: https://github.com/JaeWong91/MyMovie
