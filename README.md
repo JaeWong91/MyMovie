@@ -248,7 +248,7 @@ Each of the collections have a simple key-value format.
         - Within each Movie Page, there is a "Delete Movie" button. A warning modal will appear for the admin to confirm the permanent removal of the movie.
 
 ### Manual Testing
-Further extensive manual testing was performed. The documentation can be found [here]().
+Further extensive manual testing was performed. The documentation can be found [here](./static/readme-images/ms3-testing.pdf).
 
 # Deployment
 
