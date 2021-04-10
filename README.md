@@ -247,7 +247,8 @@ Each of the collections have a simple key-value format.
     - I would like to delete or edit an existing review written by all users, in case the contents are inappropriate. 
         - Within each Movie Page, there is a "Delete Movie" button. A warning modal will appear for the admin to confirm the permanent removal of the movie.
 
-
+### Manual Testing
+Further extensive manual testing was performed. The documentation can be found [here]().
 
 # Deployment
 
@@ -335,7 +336,7 @@ There are a few ways to clone a project. In this section, I will describe the me
 
 # Credits
 
-### Code credits
+### Code
 - Code institute Flask mini project video tutorials - This has assisted greatly for my project.
 
 - Confirmation Modals - The code for creating warning modals for confirmation of deleting seperate movies or reviews - [Stack Overflow](https://stackoverflow.com/questions/28556370/confirmation-modal-for-flask-not-working-in-a-loop)
