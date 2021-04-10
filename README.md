@@ -185,7 +185,7 @@ Each of the collections have a simple key-value format.
     - If a user edits a review, this is also automaticlly added.
     - Only one review can be written per movie for each user.
 
-- Username
+- Users
     - This contains the user's username and password.
     - Upon registration, the application will advise if a username is already taken to ensure no duplicate usernames are created.
 
