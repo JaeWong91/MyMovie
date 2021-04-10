@@ -35,12 +35,14 @@ The Live website can be found [here](http://my-movie-project-jason.herokuapp.com
 
 ## Design
 ### Colour Scheme
-- The colours used for the project were taken from materialize.css. The site has a range of colours which I chose to mainly use the dark-grey pallete for the backgrounds. Having a dark background gave the site a feeling of a cinema experience. For the headings, navigation and footer I used a deep orange which compliments the dark background. For the text, I used the colour white for readability. 
-The buttons were also from materialize.css which were recoloured as appropriate. Red for Delete, and blue for Submit/Edit. 
+- The colours used for the project were taken from materialize.css. The site has a range of colours which I chose to mainly use the dark-grey pallete for the backgrounds. Having a dark background gave the site a feeling of a cinema experience. 
+- For the headings, navigation and footer I used a deep orange which compliments the dark background. 
+- For the text, I used the colour white for readability. 
+- The buttons were also from materialize.css which were recoloured as appropriate. Red for Delete, and blue for Submit/Edit. 
 
 ### Typography
 - The font-family used for headings, movie titles and navigation bar is "Squada One". This gave a unique look to the site and inline to the topic.
-The general body font used is "Encode". "Sans-Serif" is used as the fallback for situations where the initial fonts were failing to process.
+- The general body font used is "Encode". "Sans-Serif" is used as the fallback for situations where the initial fonts were failing to process.
 
 
 
@@ -80,9 +82,43 @@ The general body font used is "Encode". "Sans-Serif" is used as the fallback for
 
 - The Administrator is able to remove the Movie from the database or edit the Movie information.
 
-- If the user wishes to delete a review, a warning popup will appear for confirmation.
+- If the user wishes to delete a review, a warning modal will appear for confirmation.
 
-- If the Administrator wishes to delete the Movie from the database, a warning popup will appear for confirmation.
+- If the Administrator wishes to delete the Movie from the database, a warning modal will appear for confirmation.
+
+## Log In page
+- For registered users, they will need to input their username and password to log in to the website.
+
+- If either the username or password is incorrect, a flash message will advise that they have entered an "Incorrect Username and/or Password".
+
+## Register page
+- There are two input fields here, "username" and "password". A visitor is able to register an account and proceed to write a review for a movie.
+
+## Profile page
+- The profile page will house all of the user's written reviews. There are three links for each review - "Go To Movie", "Edit Review" and "Delete Review".
+    - "Go To Movie" - This button will redirect the user to the specific movie page for the written review.
+    - "Edit Review" - This link will direct the user to the "Edit Review" page where they can make any changes to their movie rating and review description"
+    - "Delete Review" - Once clicked, a modal will appear to advise if the user wishes to permantly remove the review from the database.
+
+## Add Movie page
+- Administrator access only. Here the admin has the ability to add a new movie to the database. All fields are of the text input type. 
+
+- If a user other than the admin attempts to view this page, a failsafe has been implemented that will advise that the user does not have permission to access the page.
+
+## Edit Movie
+- Administrator access only. The admin is able to change information related to the movie.
+
+- A security feature is implemented so that all other users are not able to access this page. 
+
+## Edit Review
+- This can be accessed from a user's profile page and the individual movie page. The user will be able to edit their movie rating and description.
+
+- The admin is able to edit all reviews created by all users. This is to ensure the content remains appropriate and no offensive language is used.
+
+## Administrator access
+- The admin can edit or delete all movie reviews.
+
+- The admin has the ability to edit or remove a Movie from the database.
 
 ## Future Features
 - User password reset function where a user may have forgotten their password.
