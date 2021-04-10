@@ -27,11 +27,9 @@
                             <textarea id="review_description" name="review_description" minlength="10" 
                                 maxlength="500" class="materialize-textarea white-text" 
                                 value="{{ review.review_description }}" required>{{ review.review_description }}</textarea>
-                            <input type="text" value="{{ review.by_user }}" id="by_user" name="by_user" class="hide">
-                            <p>{{ review.by_user }}</p>
                             <input type="text" value="{{ review.review_date }}" id="review_date" name="review_date" class="hide">
                         </div>
-                        
+                        <input type="text" value="{{ review.by_user }}" id="by_user" name="by_user" class="hide">
                         <!-- review buttons -->
                         <div class="col s12 center-align"> 
                             <!-- Cancel button -->
