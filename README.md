@@ -204,7 +204,6 @@ Each of the collections have a simple key-value format.
 - For the Python code, the cornflaked-linter(flake8) extension is installed in the development environment. This gave a live validation check for the code.
 - For the website responsiveness and overall look on various devices and screen size resolutions, [responsinator](http://www.responsinator.com/?url=) was used to ensure there were no overlapping images or incorrect alignments between elements. 
 - The reponsiveness was also tested using the Chrome developer tools. The range of the resolutions were 350x650 to 2160x1440 whichi would cover a large variety real world screen devices. 
-- 
 
 ## Testing User Stories
 
@@ -241,7 +240,7 @@ Each of the collections have a simple key-value format.
 - As an Administrative User:
 
     - I would like to add a movie to the database.
-        - For the admin user only, there is a "Add Movie" link in the Navigation Bar.
+        - For the admin user only, there is a "Add Movie" link in the Navigation Bar. From here, the admin can fill out a form to add a movie.
     - I would like to edit an existing movie such as the title, year of release, genre, director, cast and image.
         - Within each Movie Page, there is a "Edit Movie" button to change all or parts of the movie information.
     - I would like to delete or edit an existing review written by all users, in case the contents are inappropriate. 
