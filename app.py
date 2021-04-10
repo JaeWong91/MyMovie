@@ -256,6 +256,8 @@ def edit_review(review_id):
             "edit_date": now.strftime("%d-%m-%Y %H:%M")
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+
+        flash("Review Successfully Edited")
         return redirect(url_for("movie_page", movie_id=movie_id))
 
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
