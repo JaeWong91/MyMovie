@@ -202,7 +202,9 @@ Each of the collections have a simple key-value format.
 - For CSS, I used [W3C CSS Validator Services](https://jigsaw.w3.org/css-validator/#validate_by_input). No errors found here.
 - For Javascript, I used [JSHint](https://jshint.com/) to ensure no errors in my code.
 - For the Python code, the cornflaked-linter(flake8) extension is installed in the development environment. This gave a live validation check for the code.
-- For the website responsiveness and overall look on various devices and screen size resolutions, [responsinator](http://www.responsinator.com/?url=) was used to ensure there were no overlapping images or incorrect alignments between elements.
+- For the website responsiveness and overall look on various devices and screen size resolutions, [responsinator](http://www.responsinator.com/?url=) was used to ensure there were no overlapping images or incorrect alignments between elements. 
+- The reponsiveness was also tested using the Chrome developer tools. The range of the resolutions were 350x650 to 2160x1440 whichi would cover a large variety real world screen devices. 
+- 
 
 ## Testing User Stories
 
