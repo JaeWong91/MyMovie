@@ -304,5 +304,5 @@ def error_500(e):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)  # IMPORTANT - Make sure to change to
+            debug=False)  # IMPORTANT - Make sure to change to
 # "debug=False" prior to actual deployment
