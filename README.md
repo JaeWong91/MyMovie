@@ -195,6 +195,56 @@ Each of the collections have a simple key-value format.
 ![](./static/readme-images/data-collections.png)
 
 
+# Testing
+
+- Using [W3C Markup Validator](https://validator.w3.org/) to ensure there were no syntax errors in the HTML code. 
+    - There were errors showing where the validator is unable to read the Jinja2 language. Flask creates HTML files using templates, by pulling variables from the backend. There were no actual errors found.
+- For CSS, I used [W3C CSS Validator Services](https://jigsaw.w3.org/css-validator/#validate_by_input). No errors found here.
+- For Javascript, I used [JSHint](https://jshint.com/) to ensure no errors in my code.
+- For the Python code, the cornflaked-linter(flake8) extension is installed in the development environment. This gave a live validation check for the code.
+- For the website responsiveness and overall look on various devices and screen size resolutions, [responsinator](http://www.responsinator.com/?url=) was used to ensure there were no overlapping images or incorrect alignments between elements.
+
+## Testing User Stories
+
+- As a New Visiter:
+
+    - I would like to browse the content of the website without registering or signing up.
+        - Any visitor of the site is able to browse movies and reviews without the need to sign up.
+    - I would like to see the director and the main cast of a movie.
+        - All information can be found on either the Movies list page or individual Movie page.
+    - I would like to view reviews for any particular movie which were written by other users.
+        - When a visitor clicks a Movie from the movie list, the individual Movie page will show all existing reviews that are written by registered users of the site. The username of the writer can be seen.
+    - I would like to register an account for the website.
+        - The Register link can be found on the Home page or on the Navigation Bar.
+
+- As a Registered User:
+
+    - I would like to log in to the website.
+        - There is a Log In link on te Home page, and a link on the Navigation Bar.
+    - I would like to add a rating and a review for a movie.
+        - When the Registered User selects a movie from the movie list, they will be redirected to the Movie page where they can submit a rating and a review.
+    - I would like to see when I wrote a review.
+        - Once a review is posted, the time stamp can be seen at the bottom.
+    - I would like to edit the review to add, remove or adjust parts of my description.
+        - For their own written reviews, an "Edit Review" button is available where they can edit the rating or description.
+    - I would like to see when I edited a movie review.
+        - When a review is editted, a time stamp will be next to the created date/time to show when the review was editted.
+    - I would like to change my rating score for a movie.
+        - Similar to editting a review, the rating can be changed by clicking the "Edit Review" button
+    - I would like to view all the reviews I have written.
+        - On the Profile page, the registered user is able to see all their written reviews.
+    - I would like to remove my existing review.
+        - A "Delete Review" button is available for reviews written by the Registered User. A warning will appear for the user confirm the permanent removal of the review.
+
+- As an Administrative User:
+
+    - I would like to add a movie to the database.
+        - For the admin user only, there is a "Add Movie" link in the Navigation Bar.
+    - I would like to edit an existing movie such as the title, year of release, genre, director, cast and image.
+        - Within each Movie Page, there is a "Edit Movie" button to change all or parts of the movie information.
+    - I would like to delete or edit an existing review written by all users, in case the contents are inappropriate. 
+        - Within each Movie Page, there is a "Delete Movie" button. A warning modal will appear for the admin to confirm the permanent removal of the movie.
+
 
 
 # Deployment
