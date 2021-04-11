@@ -2,7 +2,10 @@
 
 ![](/static/readme-images/readme-header.PNG)
 
-This is a movie review website for all movie fans. Visitors of the site can search and view reviews and ratings for all kinds of movies, even without a registered account. If a user would like to write a review of their own, a registered account is required. Once registered, the user is able to write reviews and see their written reviews on their profile page. They will also have the ability to edit existing reviews, or remove them.
+This is a movie review website for all movie fans. Visitors of the site can search and view reviews and ratings for all kinds of movies, 
+even without a registered account. If a user would like to write a review of their own, a registered account is required. 
+Once registered, the user is able to write reviews and see their written reviews on their profile page. 
+They will also have the ability to edit their own existing reviews, or remove them completely.
 
 The Live website can be found [here](http://my-movie-project-jason.herokuapp.com/home).
 
@@ -247,7 +250,8 @@ Each of the collections have a simple key-value format.
         - Within each Movie Page, there is a "Delete Movie" button. A warning modal will appear for the admin to confirm the permanent removal of the movie.
 
 ### Manual Testing
-Further extensive manual testing was performed. The documentation can be found [here](./static/readme-images/ms3-testing.pdf).
+- [Responsinator](http://www.responsinator.com/?url=) - This was used to test the layout and responsiveness of the website. This is to ensure that the site is visually pleasing and easy to read and navigate.
+- Further extensive manual testing was performed. The documentation can be found [here](./static/readme-images/ms3-testing.pdf).
 
 # Deployment
 
@@ -348,4 +352,8 @@ There are a few ways to clone a project. In this section, I will describe the me
 - All Movie information were obtained from [IMDB](https://www.imdb.com/?ref_=nv_home), arguably the most popular movie website.
 - The Home page background image was taken from by a user named "Felix Mooneeram" on [unsplash.com](https://unsplash.com/s/photos/movie).
 
+### Acknowledgements
+- I would like to thenk the student tutor support team for their help throughout the project. 
+- I would also like to thank my mentor Spencer Barriball for his guidance and checking my code.
+- My friends and family for testing the website themselves and providing feedback.
 
