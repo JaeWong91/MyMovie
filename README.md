@@ -353,7 +353,7 @@ There are a few ways to clone a project. In this section, I will describe the me
 
 - Time stamps to show when a review was added and edited - [codegrepper.com](https://www.codegrepper.com/code-examples/python/datetime+today)
 
-- Pagination on movie list page -  Guidance and assistance from my mentor, Spencer Barriball
+- Pagination on movie list page -  I did not use the materialize pagination, instead with the guidance and assistance from my mentor, Spencer Barriball, this code was written by myself.
 
 ### Content
 - All Movie information were obtained from [IMDB](https://www.imdb.com/?ref_=nv_home), arguably the most popular movie website.
