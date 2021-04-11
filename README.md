@@ -165,7 +165,7 @@ The Live website can be found [here](http://my-movie-project-jason.herokuapp.com
 - [Google Fonts](https://fonts.google.com/) - Used to apply the font families.
 - [PicResize](https://picresize.com/) - This is used to resize large images down to smaller files.
 - [Responsinator](http://www.responsinator.com/?url=) - Used to test the site responsiveness on various screen resolution sizes. This is to ensure the layout is intended as designed.
-
+- [Font Awesome](https://fontawesome.com/) - Used to apply icons such as the social media icons.
 
 # Database
 
@@ -252,6 +252,9 @@ Each of the collections have a simple key-value format.
 ### Manual Testing
 - [Responsinator](http://www.responsinator.com/?url=) - This was used to test the layout and responsiveness of the website. This is to ensure that the site is visually pleasing and easy to read and navigate.
 - Further extensive manual testing was performed. The documentation can be found [here](./static/readme-images/ms3-testing.pdf).
+
+### Known Bugs
+- The search function on the movies page will at times not search correctly. An example would be when searching the movie "Avengers", typing in the term "aven" will not work. Using the term "aveng" will work.
 
 # Deployment
 
@@ -356,4 +359,3 @@ There are a few ways to clone a project. In this section, I will describe the me
 - I would like to thenk the student tutor support team for their help throughout the project. 
 - I would also like to thank my mentor Spencer Barriball for his guidance and checking my code.
 - My friends and family for testing the website themselves and providing feedback.
-
