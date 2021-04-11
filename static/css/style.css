@@ -190,6 +190,10 @@ input[type=range]{
     align-items: center;
 }
 
+input[type=range]+.thumb {
+    display: none;
+}
+
 /* --- Buttons --- */
 .btn-small {
     margin: 5px;;
