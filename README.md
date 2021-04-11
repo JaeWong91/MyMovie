@@ -122,10 +122,14 @@ The Live website can be found [here](http://my-movie-project-jason.herokuapp.com
 
 - The admin is able to edit all reviews created by all users. This is to ensure the content remains appropriate and no offensive language is used.
 
-### Custom 404 page
+### Custom 404 page (not found)
 - An errorhandler code was created for a custom 404 page. The page will advise the visitor/user that an error has occured.
 
 - The page has a link to return to the Home page
+
+### Custom 403 page (permissions)
+#### Defensive Programming
+- a custom 403 page was added for defensive programming purposes. When a user tries to input the URL to add a movie(this is admin access only), the 403 page will appear advising that they do not have permission to access the page.
 
 ### Administrator access
 - The admin can edit or delete all movie reviews.
@@ -349,7 +353,7 @@ There are a few ways to clone a project. In this section, I will describe the me
 
 - Time stamps to show when a review was added and edited - [codegrepper.com](https://www.codegrepper.com/code-examples/python/datetime+today)
 
-- Pagination on movie list page - Guidance and assistance from my mentor, Spencer Barriball
+- Pagination on movie list page -  Guidance and assistance from my mentor, Spencer Barriball
 
 ### Content
 - All Movie information were obtained from [IMDB](https://www.imdb.com/?ref_=nv_home), arguably the most popular movie website.
